@@ -10,9 +10,6 @@ import styled from 'styled-components';
 const Search: FC = () => {
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1360px)' });
     const [visibleSearchBox, setVisibleSearchBox] = useReducer((prev) => !prev, false);
-    const onSelect = useCallback(() => {
-        console.log('');
-    }, []);
     const onShow = useCallback(() => {
         setVisibleSearchBox();
     }, []);
