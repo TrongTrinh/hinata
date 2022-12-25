@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+    webapp:
+        container_name: hinata_web_ads_production
+        ports:
+            - 3052:3000

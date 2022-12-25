@@ -1,0 +1,416 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["orderByRelation", "filterJson"]
+}
+
+model Account {
+  id                 String    @id @default(cuid())
+  userId             String
+  providerType       String
+  providerId         String
+  providerAccountId  String
+  refreshToken       String?
+  accessToken        String?   @db.Text
+  accessTokenExpires DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  user               User      @relation(fields: [userId], references: [id])
+
+  @@unique([providerId, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  userId       String
+  expires      DateTime
+  sessionToken String   @unique
+  accessToken  String   @unique
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id])
+}
+
+model VerificationRequest {
+  id         String   @id @default(cuid())
+  identifier String
+  token      String   @unique
+  expires    DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([identifier, token])
+}
+
+model Country {
+  id      String   @id @default(cuid())
+  name    String   @unique
+  code    String   @unique
+  users   User[]
+  created DateTime @default(now())
+  updated DateTime @updatedAt
+}
+
+model User {
+  id                   String         @id @default(cuid())
+  email                String?
+  sub                  String?        @unique
+  emailVerified        DateTime?
+  firstName            String?
+  lastName             String?
+  nickname             String?
+  password             String?
+  phone                String?
+  image                String?
+  s3Key                String?
+  biography            String?        @db.Text
+  gender               Gender         @default(UNKNOWN)
+  birthdate            DateTime?
+  sns                  Json?
+  hazamaAddress        String?
+  hazamaWallet         String?
+  hazamaOriginalDomain String?
+  salt                 String?
+  iv                   String?
+  encryptedWif         String?
+  stripeCustomerId     String?
+  role                 Role           @default(USER)
+  avatar               String?
+  slug                 String?        @unique
+  wpSlug               String?
+  deleted              Boolean        @default(false)
+  operator             Boolean        @default(false)
+  registration         Registration?
+  galleries            Gallery[]
+  collections          Collection[]
+  orders               Order[]
+  categories           UserCategory[]
+  followeds            Relationship[] @relation(name: "followeds")
+  followers            Relationship[] @relation(name: "followers")
+  campaigns            UserCampaign[]
+  Account              Account[]
+  Session              Session[]
+  Country              Country?       @relation(fields: [countryId], references: [id])
+  countryId            String?
+  created              DateTime       @default(now())
+  updated              DateTime       @updatedAt
+}
+
+model Registration {
+  id      String   @id @default(cuid())
+  User    User?    @relation(fields: [userId], references: [id])
+  userId  String?  @unique
+  uuid    String
+  created DateTime @default(now())
+  updated DateTime @updatedAt
+}
+
+model Gallery {
+  id      String   @id @default(cuid())
+  User    User?    @relation(fields: [userId], references: [id])
+  userId  String?
+  url     String
+  s3Key   String?
+  created DateTime @default(now())
+  updated DateTime @updatedAt
+}
+
+model Relationship {
+  id       String   @id @default(cuid())
+  Followed User?    @relation("followeds", fields: [fromId], references: [id])
+  toId     String?
+  Follower User?    @relation("followers", fields: [toId], references: [id])
+  fromId   String?
+  created  DateTime @default(now())
+  updated  DateTime @updatedAt
+
+  @@unique([toId, fromId], name: "userConnection")
+}
+
+model Product {
+  id              String            @id @default(cuid())
+  name            String            @unique
+  description     String?           @db.Text
+  file            String
+  previewFile     String?
+  minimizedImage  String?
+  s3Key           String?
+  previewS3Key    String?
+  miniS3Key       String?
+  streamingId     String?
+  slug            String?           @unique
+  currency        Currency?         @default(JPY)
+  hotChoice       Boolean           @default(false)
+  thumbnails      Thumbnail[]
+  rights          Right[]
+  sponsors        ProductSponsor[]
+  collections     Collection[]
+  orders          Order[]
+  categories      ProductCategory[]
+  tags            Json?
+  tokens          Token[]
+  Campaign        Campaign[]
+  stock           ProductStock?     @relation(fields: [productStockId], references: [id])
+  productStockId  String?           @unique
+  tag             Tag?              @relation(fields: [tagId], references: [id])
+  tagId           String?
+  price           Int
+  views           ProductViews?
+  status          ProductStatus     @default(PENDING)
+  remarks         String?
+  disableDownload Boolean           @default(false)
+  soldout         Boolean           @default(false)
+  published       Boolean?          @default(false)
+  deleted         Boolean           @default(false)
+  created         DateTime          @default(now())
+  updated         DateTime          @updatedAt
+}
+
+model ProductStock {
+  id         String   @id @default(cuid())
+  stock      Int
+  lastNumber Int
+  maxNumber  Int
+  Product    Product?
+  created    DateTime @default(now())
+  updated    DateTime @updatedAt
+}
+
+model ProductViews {
+  id        String   @id @default(cuid())
+  views     Int      @default(0)
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId String?  @unique
+  created   DateTime @default(now())
+  updated   DateTime @updatedAt
+}
+
+model Right {
+  id        String   @id @default(cuid())
+  name      String
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId String?
+  created   DateTime @default(now())
+  updated   DateTime @updatedAt
+}
+
+model Thumbnail {
+  id        String   @id @default(cuid())
+  url       String
+  s3Key     String?
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId String?
+  created   DateTime @default(now())
+  updated   DateTime @updatedAt
+}
+
+model UserCampaign {
+  id         String    @id @default(cuid())
+  User       User?     @relation(fields: [userId], references: [id])
+  userId     String?
+  Campaign   Campaign? @relation(fields: [campaignId], references: [id])
+  campaignId String?
+  created    DateTime  @default(now())
+  updated    DateTime  @updatedAt
+
+  @@unique([userId, campaignId], name: "usercampaign")
+}
+
+model CampaignGroup {
+  id           String                  @id @default(cuid())
+  type         CampaignType            @default(SELECT)
+  campaigns    CampaignGroupCampaign[]
+  description  String?                 @db.Text
+  started      DateTime
+  ended        DateTime
+  created      DateTime                @default(now())
+  updated      DateTime                @updatedAt
+}
+
+model CampaignGroupCampaign {
+  id              String         @id @default(cuid())
+  CampaignGroup   CampaignGroup? @relation(fields: [campaignGroupId], references: [id])
+  campaignGroupId String?
+  Campaign        Campaign?      @relation(fields: [campaignId], references: [id])
+  campaignId      String?        @unique
+  created         DateTime       @default(now())
+  updated         DateTime       @updatedAt
+}
+
+model Campaign {
+  id             String                  @id @default(cuid())
+  Product        Product?                @relation(fields: [productId], references: [id])
+  productId      String?
+  freeOfCharge   Boolean                 @default(false)
+  active         Boolean                 @default(true)
+  users          UserCampaign[]
+  campaignGroups CampaignGroupCampaign[]
+  created        DateTime                @default(now())
+  updated        DateTime                @updatedAt
+}
+
+model Order {
+  id        String      @id @default(cuid())
+  User      User?       @relation(fields: [userId], references: [id])
+  userId    String?
+  Product   Product?    @relation(fields: [productId], references: [id])
+  productId String?
+  status    OrderStatus @default(CREATED)
+  created   DateTime    @default(now())
+  updated   DateTime    @updatedAt
+}
+
+model Tag {
+  id      String    @id @default(cuid())
+  name    String    @unique
+  Product Product[]
+  created DateTime  @default(now())
+  updated DateTime  @updatedAt
+}
+
+model Sponsor {
+  id          String           @id @default(cuid())
+  name        String           @unique
+  url         String
+  s3Key       String?
+  description String?          @db.Text
+  website     String?
+  primary     Boolean          @default(false)
+  products    ProductSponsor[]
+  created     DateTime         @default(now())
+  updated     DateTime         @updatedAt
+}
+
+model ProductSponsor {
+  id         String   @id @default(cuid())
+  Product    Product? @relation(fields: [productId], references: [id])
+  productId  String?
+  Sponsors   Sponsor? @relation(fields: [sponsorsId], references: [id])
+  sponsorsId String?
+  created    DateTime @default(now())
+  updated    DateTime @updatedAt
+
+  @@unique([productId, sponsorsId], name: "productsponsor")
+}
+
+model Collection {
+  id        String   @id @default(cuid())
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId String?
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+  token     Token?   @relation(fields: [tokenId], references: [id])
+  tokenId   String?
+  origin    Boolean
+  created   DateTime @default(now())
+  updated   DateTime @updatedAt
+
+  @@unique([userId, productId, tokenId], name: "productsponsor")
+}
+
+model Token {
+  id         String       @id @default(cuid())
+  path       String
+  name       String
+  version    String
+  serial     String?
+  fileHash   String?
+  author     String?
+  next       Boolean      @default(true)
+  Collection Collection[]
+  created    DateTime     @default(now())
+  updated    DateTime     @updatedAt
+  Product    Product?     @relation(fields: [productId], references: [id])
+  productId  String?
+}
+
+model UserCategory {
+  id         String    @id @default(cuid())
+  User       User?     @relation(fields: [userId], references: [id])
+  userId     String?
+  Category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId String?
+  created    DateTime  @default(now())
+  updated    DateTime  @updatedAt
+
+  @@unique([userId, categoryId], name: "usercategory")
+}
+
+model ProductCategory {
+  id         String    @id @default(cuid())
+  Product    Product?  @relation(fields: [productId], references: [id])
+  productId  String?
+  Category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId String?
+  created    DateTime  @default(now())
+  updated    DateTime  @updatedAt
+
+  @@unique([productId, categoryId], name: "productcategory")
+}
+
+model Category {
+  id       String            @id @default(cuid())
+  name     String            @unique
+  users    UserCategory[]
+  products ProductCategory[]
+  created  DateTime          @default(now())
+  updated  DateTime          @updatedAt
+}
+
+model TwitterCampaign {
+  id        String   @id @default(cuid())
+  hashTag   String   @db.Text
+  popupText String   @db.Text
+  fetchId   Int?
+  log       Json?
+  stopped   Boolean  @default(false)
+  deleted   Boolean  @default(false)
+  created   DateTime @default(now())
+  updated   DateTime @updatedAt
+}
+
+enum Role {
+  USER
+  CREATOR
+  ADMIN
+}
+
+enum ProductStatus {
+  PENDING
+  APPROVED
+  DENIED
+}
+
+enum OrderStatus {
+  CREATED
+  PAID
+  COMPLETED
+}
+
+enum RegistrationStatus {
+  PENDING
+  COMPLETED
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  UNKNOWN
+}
+
+enum Currency {
+  USD
+  JPY
+}
+
+enum CampaignType {
+  SELECT
+  RANDOM
+}

@@ -1,0 +1,55 @@
+// import 'assets/js/script.js';
+import 'assets/styles/global.css';
+import type { AppProps } from 'next/app';
+import { useCallback, useEffect, useReducer, useState } from 'react';
+import * as Scroll from 'react-scroll';
+import { animateScroll as scroll, Button, Element, Events, Link, scroller, scrollSpy } from 'react-scroll';
+export const useWindowScrollPositions = () => {
+    const [scrollPosition, setPosition] = useState({ scrollX: 0, scrollY: 0 });
+
+    useEffect(() => {
+        function updatePosition() {
+            setPosition({ scrollX: window.scrollX, scrollY: window.scrollY });
+        }
+
+        window.addEventListener('scroll', updatePosition, true);
+        updatePosition();
+
+        return () => window.removeEventListener('scroll', updatePosition, true);
+    }, []);
+
+    return scrollPosition;
+};
+export default function App({ Component, pageProps }: AppProps) {
+    // const { scrollX, scrollY } = useWindowScrollPositions();
+    useEffect(() => {
+        const previousScrollPos = window.pageYOffset;
+
+        // Handler to call on window resize
+        // Add event listener
+        window.addEventListener(
+            'scroll',
+            function (event) {
+                console.log(
+                    '🚀 ~ file: _app.tsx ~ line 9 ~ App ~ previousScrollPos',
+                    Scroll.scroller.get('test-abc').clientHeight,
+                    Scroll.scroller.get('test-abc').scrollHeight,
+                    Scroll.scroller.get('test-abc').scrollTop,
+                    document.body.scrollTop,
+                );
+                // console.log('🚀 ~ file: _app.tsx ~ line 25 ~ App ~ scrollY', scrollX, scrollY, document.body.scrollTop);
+                // const aaa = document.getElementsByTagName('body');
+                // console.log('🚀 ~ file: _app.tsx ~ line 15 ~ useEffect ~ aaa', aaa.scrollTop);
+                document.getElementById('nav-bar')?.classList.add('bg-white', 'shadow-black-0.1');
+                // const top = window.pageYOffset || document.documentElement.scrollTop;
+                // console.log('🚀 ~ file: _app.tsx ~ line 15 ~ useEffect ~ top', top, this);
+            },
+            true,
+        );
+    }, []);
+    return (
+        <>
+            <Component {...pageProps} />{' '}
+        </>
+    );
+}
