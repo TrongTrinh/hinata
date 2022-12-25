@@ -17,17 +17,14 @@ export type MetaTagsProps = {
 const HeadCustom: React.FC<MetaTagsProps> = () => {
     return (
         <Head>
-            <title>TubeKick - The Best Promotion Tool</title>
+            <title>Hinata - The Best Promotion Tool</title>
             <meta
                 name='description'
                 content={
-                    'With TubeKick you can increase your YouTube subscribers, views and more to give your channel a boost. Launch your first YouTube promotion today'
+                    'With Hinata you can increase your YouTube subscribers, views and more to give your channel a boost. Launch your first YouTube promotion today'
                 }
             />
-            <meta
-                name='viewport'
-                content='width=device-width, initial-scale=1, maximum-scale=1'
-            />
+            <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1' />
             <meta property='og:image' content={defaultImage} />
             <link rel='icon' href={'/images/logo.png'} />
         </Head>

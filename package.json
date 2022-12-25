@@ -2,7 +2,6 @@
     "name": "my-app",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://trongtrinh.github.io/hinata",
     "scripts": {
         "dev": "next dev",
         "build": "next build",
@@ -10,9 +9,7 @@
         "lint": "next lint",
         "lint:fix": "next lint --fix",
         "format": "prettier --check --ignore-path .gitignore .",
-        "format:fix": "prettier --write --ignore-path .gitignore .",
-        "predeploy": "yarn build",
-        "deploy": "gh-pages -d build"
+        "format:fix": "prettier --write --ignore-path .gitignore ."
     },
     "dependencies": {
         "@fullpage/react-fullpage": "^0.1.31",
@@ -60,7 +57,6 @@
         "eslint": "^8.27.0",
         "eslint-config-next": "^13.1.1",
         "eslint-config-prettier": "^8.5.0",
-        "gh-pages": "^4.0.0",
         "husky": "^8.0.2",
         "lighthouse": "^9.6.8",
         "postcss": "^8.4.18",
