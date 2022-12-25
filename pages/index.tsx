@@ -1,7 +1,9 @@
-import HomePageV from '@components/home';
 import Layout from 'components/layouts/main';
 import { NextPage } from 'next';
-
+import dynamic from 'next/dynamic';
+const HomePageV = dynamic(() => import('@components/home'), {
+    ssr: false,
+});
 const Home: NextPage = () => {
     return (
         <Layout>

@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { SectionStyle } from '@components/home-v2/style';
+import { SectionStyle } from '@components/home/style';
 import { IProduct, IProductHomeSlide } from '@lib/domain/interfaces/i-product';
 import { getCurrenctySign } from '@lib/utils/common';
 import { gsap } from 'gsap';
