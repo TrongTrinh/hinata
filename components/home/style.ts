@@ -186,14 +186,14 @@ export const SectionStyle = styled.div<{
                         top: -6%;
                         left: 18%;
                         font-weight: bold;
-                        font-size: ${(props) => (props.isMobileSize ? '1.6vw' : '0.8rem')};
+                        font-size: ${(props) => (props.isMobileSize ? '1.6vw' : '0.8vw')};
                         letter-spacing: 0.4em;
                         background: linear-gradient(90deg, #bdbdbd, #ffffff);
                         width: 40%;
                         height: 10%;
                         clip-path: polygon(0% 100%, 25% 0%, 100% 0%, 100% 100%);
                         padding-top: 0.5vh;
-                        padding-left: 1rem;
+                        padding-left: ${(props) => (props.isMobileSize ? '9vw' : '5vw')};
                     }
                     .sold {
                         position: absolute;

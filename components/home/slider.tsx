@@ -303,8 +303,8 @@ const SliderSection: NextPage<Props> = ({ products, slideKey, ...props }) => {
                         infinite={true}
                         swipeable={false}
                         draggable={false}
-                        autoPlay={true}
-                        autoPlaySpeed={3000}
+                        // autoPlay={true}
+                        // autoPlaySpeed={3000}
                         focusOnSelect={true}
                         responsive={{
                             superLargeDesktop: {
