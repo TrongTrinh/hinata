@@ -1,45 +1,50 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { IButtonOrangeProps } from '@lib/domain/common/button-orange';
 import classnames from 'classnames';
 import Link from 'next/link';
-import { useCallback } from 'react';
+import { FC, useCallback } from 'react';
 
-const ButtonOrange = ({
+const ButtonOrange: FC<IButtonOrangeProps> = ({
     href = '',
-    hanldeClick,
+    handleClick,
     className,
     title = 'all',
     imgClass = 'w-1 h-0.5',
     classTitle = '',
     imgSrc,
-}: {
-    href?: string;
-    hanldeClick?: any;
-    className?: string;
-    imgSrc?: string;
-    title?: string;
-    imgClass?: string;
-    classTitle?: string;
+    size = 'w-[6.6rem] h-[3.2rem]',
+    children,
+    item,
+    marginT = 'max-md:mt-2 ',
 }) => {
     const onClick = useCallback(() => {
-        hanldeClick && hanldeClick();
-    }, [hanldeClick]);
+        handleClick && handleClick(item);
+    }, [handleClick, item]);
 
-    if (hanldeClick)
+    if (handleClick)
         return (
             <button
                 type='button'
                 onClick={onClick}
                 className={classnames(
-                    'w-[6.6rem] h-[3.2rem] font-jost font-normal text-1.4 max-md:mt-2 shadow-black-0.5 bg-gradient-orange rounded-[2rem] flex justify-center items-center text-white ',
+                    'relative font-jost font-normal text-1.4 shadow-black-0.5 bg-gradient-orange rounded-[2rem] flex justify-center items-center text-white ',
+                    size,
                     className,
+                    marginT,
                 )}
             >
-                <span className={classTitle}>{title}</span>
-                {imgSrc && (
-                    <div className={imgClass}>
-                        <img className='w-full' src={imgSrc} alt='btn image' />
-                    </div>
+                {children ? (
+                    children
+                ) : (
+                    <>
+                        <span className={classTitle}>{title}</span>
+                        {imgSrc && (
+                            <div className={imgClass}>
+                                <img className='absolute right-1.4' src={imgSrc} alt='btn image' />
+                            </div>
+                        )}
+                    </>
                 )}
             </button>
         );
@@ -49,7 +54,8 @@ const ButtonOrange = ({
             <Link
                 href={href}
                 className={classnames(
-                    'w-[6.6rem] h-[3.2rem] font-jost font-normal text-1.4 max-md:mt-2 shadow-black-0.5 bg-gradient-orange rounded-[2rem] flex justify-center items-center text-white ',
+                    'font-jost font-normal text-1.4 max-md:mt-2 shadow-black-0.5 bg-gradient-orange rounded-[2rem] flex justify-center items-center text-white ',
+                    size,
                     className,
                 )}
             >

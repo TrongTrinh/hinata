@@ -22,15 +22,24 @@ body {
     }
 }
 
-.bg-gradient-orange {
-    background: linear-gradient(135deg, #cb211b, #f4691b);
+@media (max-width: 768px) {
+    html {
+        font-size: 10px;
+    }
 }
 
 .bg-gradient-orange {
     background: linear-gradient(135deg, #cb211b, #f4691b);
 }
+.bg-transparent {
+    background: transparent;
+}
 .bg-gradient-search-box {
     background: linear-gradient(90deg, #3e3a39 -63.17%, #000000 162.81%);
+}
+
+.bg-gradient-magazine-item {
+    background: linear-gradient(325.6deg, #ffffff -12%, #bdbdbd 166.85%);
 }
 
 .fp-warning,

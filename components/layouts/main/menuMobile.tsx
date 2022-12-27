@@ -37,7 +37,7 @@ const MenuMobile = ({ navbarOpen, setNavbarOpen }: any) => {
             className={
                 isTabletOrMobile
                     ? classnames(
-                          'fixed w-full right-0 bottom-0  bg-white h-full overflow-y-auto border-none py-1.4 px-2 transition-all duration-300',
+                          'fixed w-full right-0 bottom-0  bg-white h-full overflow-y-auto border-none py-1.4 px-2 transition-all duration-300 z-[9999999]',
                           {
                               'left-[-100%] top-[-5%]': !navbarOpen,
                               'left-0 top-0': navbarOpen,
@@ -111,6 +111,7 @@ const MenuStyle = styled(Menu)`
     }
     .rc-menu-submenu {
         cursor: pointer;
+        top: 100px !important;
     }
     .rc-menu-submenu-active,
     .rc-menu-item-active {

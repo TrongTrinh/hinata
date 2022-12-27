@@ -45,7 +45,7 @@ const Home: FC = () => {
                                     </p>
                                 }
                                 api='/api/products?order=created:desc&take=8&squery=hotChoice->equals->true'
-                                link='/works'
+                                link='/auction'
                                 products={ProductsChoiceDummy}
                             />
                         </div>
@@ -59,7 +59,7 @@ const Home: FC = () => {
                                 slideKey='auction'
                                 slideNo='02'
                                 api=''
-                                link='/works'
+                                link='/auction'
                                 products={ProductsAuctionDummy}
                             />
                         </div>
@@ -69,7 +69,7 @@ const Home: FC = () => {
                                 slideNo='03'
                                 title='NEW ITEM'
                                 api='/api/products?order=created:desc&take=12'
-                                link='/works'
+                                link='/auction'
                                 products={ProductsChoiceDummy}
                             />
                         </div>

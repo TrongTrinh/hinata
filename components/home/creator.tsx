@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import CreatorItem from '@components/creators/item';
 import { dummy_users } from '@lib/utils/dummy/users';
 import { NextPage } from 'next';
 import Link from 'next/link';
@@ -11,7 +12,7 @@ const CreatorSection: NextPage = () => {
     const creators = dummy_users;
 
     const button_orange = (
-        <Link href={`/creators/`} className='button w-[66px] h-[32px] font-jost font-normal max-md:mt-3'>
+        <Link href={`/creators`} className='button w-[66px] h-[32px] font-jost font-normal max-md:mt-3'>
             ALL
         </Link>
     );
@@ -23,24 +24,8 @@ const CreatorSection: NextPage = () => {
             </div>
             <div className='grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-[1rem] md:gap-y-[2.6rem] container mx-auto'>
                 {creators &&
-                    creators.map((creator, index) => (
-                        <figure key={index} className='border border-b-eclipse'>
-                            <Link href={`/creators/${creator.slug || creator.id}`} className='flex items-center'>
-                                <div>
-                                    <img
-                                        className='w-[7.9rem] md:w-[9rem] h-[7.9rem] md:h-[9rem] object-cover mr-2 rounded-full mb-1.6'
-                                        src={creator.avatar || '/assets/images/common/icn-notlogin.jpg'}
-                                        alt={creator.nickname || ''}
-                                    />
-                                </div>
-                                <div className='flex flex-col font-nato pb-1.4'>
-                                    <div className='text-1.3 uppercase font-medium text-suva-grey'>
-                                        {creator.Country?.name}
-                                    </div>
-                                    <div className='text-1.5 text-white uppercase font-bold '>{creator.nickname}</div>
-                                </div>
-                            </Link>
-                        </figure>
+                    creators.map((item, index) => (
+                        <CreatorItem item={item} key={index} classTitle='text-white' className=' border-eclipse' />
                     ))}
             </div>
             {isMobileSize && creators && <div className='flex justify-center'>{button_orange}</div>}

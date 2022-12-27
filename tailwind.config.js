@@ -27,6 +27,7 @@ module.exports = {
             black: '#000000',
             eclipse: '#3E3A39',
             'white-smoke': '#f3f3f3',
+            'white-smoke-2': '#E9E9E9',
             transparent: 'transparent',
             tundora: '#585655',
         },
@@ -57,6 +58,7 @@ module.exports = {
         },
         spacing: {
             0: '0rem',
+            0.1: '0.1rem',
             0.2: '0.2rem',
             0.3: '0.3rem',
             0.4: '0.4rem',
@@ -94,6 +96,7 @@ module.exports = {
             'black-0.5': '1px 1px 3px rgba(0, 0, 0, 0.5)',
             'black-0.1': '4px 2px 4px rgba(0, 0, 0, 0.1)',
             'search-box': '4px 6px 7px 0px #00000033',
+            'magazine-box': ' 4px 6px 11px 0px #0000001f',
         },
         // extend: {
         //     fontSize: {

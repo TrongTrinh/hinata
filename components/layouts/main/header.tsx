@@ -64,7 +64,7 @@ const Header: FC = () => {
                             </div>
 
                             <ButtonOrange
-                                hanldeClick={redictToDashboard}
+                                handleClick={redictToDashboard}
                                 className='uppercase w-[13rem] h-4'
                                 classTitle='block w-[13rem] text-1.3'
                                 title='ウォレットに接続'

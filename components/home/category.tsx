@@ -11,16 +11,29 @@ const CategorySection: NextPage = () => {
     const isMobileSize = useMediaQuery({ query: '(max-width: 768px)' });
 
     const categories = categories_dummy;
-
+    const buttonAll = (
+        <div className='flex justify-center'>
+            <Link
+                href={`/category`}
+                className='w-[6.6rem] h-[3.2rem] font-jost font-normal text-1.4 max-md:mt-2 shadow-black-0.5 bg-gradient-orange rounded-[2rem] flex justify-center items-center text-white '
+            >
+                ALL
+            </Link>
+        </div>
+    );
     return (
         <SectionStyle isMobileSize={isMobileSize} className='pt-5 md:pt-[9.9rem] pb-[5.6rem] md:pb-[13.1rem]'>
-            <div className='text-3 leading-[4.35rem]  pb-2 md:pb-3 text-center font-jost'>CATEGORY</div>
+            {/* <div className='text-3 leading-[4.35rem]  pb-2 md:pb-3 text-center font-jost'>CATEGORY</div> */}
+            <div className='flex justify-center items-center mb-2 md:mb-3'>
+                <div className='text-3 mr-2 text-center leading-[4.35rem]'>CATEGORY</div>
+                {!isMobileSize && categories && buttonAll}
+            </div>
 
-            <div className='grid  grid-cols-2 md:grid-cols-3 gap-2.5 sm:gap-2 md:gap-2.5 max-w-[89rem] px-1.6 md:mx-auto'>
+            <div className='grid  grid-cols-2 md:grid-cols-3 gap-x-2.5 gap-y-2  sm:gap-2 md:gap-2.5 max-w-[89rem] px-1.6 md:mx-auto'>
                 {categories &&
                     categories.map((category: ICategory) => (
                         <figure key={category.id} className='rounded-[0.6rem] p-0.4 sm:p-0.9'>
-                            <Link href={`/works/browse/${category.name}`}>
+                            <Link href={`/category`}>
                                 {/* width: 100%; height: 100%; position: absolute; top: 0; left: 0; object-fit: cover;
                                 border-radius: 0.4rem; */}
                                 <div className='w-auto h-auto relative before:pt-[65%] before:block'>
@@ -39,6 +52,7 @@ const CategorySection: NextPage = () => {
                         </figure>
                     ))}
             </div>
+            {isMobileSize && buttonAll}
         </SectionStyle>
     );
 };

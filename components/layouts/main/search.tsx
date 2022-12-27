@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import ButtonOrange from '@components/common/buttons/button-orange';
-import DropdownGradient from '@components/common/dropdown/DropdownGradient';
+import DropdownDefault from '@components/common/dropdown/default';
 import SearchFilterBox from '@components/common/SearchFilterBox';
 import 'rc-menu/assets/index.css';
 import { FC, useCallback, useReducer } from 'react';
@@ -10,20 +10,25 @@ import styled from 'styled-components';
 const Search: FC = () => {
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1360px)' });
     const [visibleSearchBox, setVisibleSearchBox] = useReducer((prev) => !prev, false);
-    const onShow = useCallback(() => {
+    const handleVisibleChange = useCallback(() => {
         setVisibleSearchBox();
     }, []);
 
     return (
-        <SearchStyle className='flex items-center'>
-            <DropdownGradient overlay={<SearchFilterBox />} visible={visibleSearchBox}>
+        <SearchStyle className='flex items-center '>
+            <DropdownDefault
+                overlay={<SearchFilterBox className='max-md:hidden' />}
+                visible={visibleSearchBox}
+                onVisibleChange={handleVisibleChange}
+            >
                 <ButtonOrange
-                    hanldeClick={onShow}
-                    className='uppercase w-[11rem] h-4  mr-1'
+                    handleClick={handleVisibleChange}
+                    className='uppercase  mr-1'
                     classTitle='mr-1.6 ml-2'
                     imgSrc={'/assets/images/common/dropdown-white.svg'}
+                    size=' w-[11rem] h-4'
                 />
-            </DropdownGradient>
+            </DropdownDefault>
             <div className='relative wrap-search'>
                 <img
                     className='absolute left-1 top-1'
