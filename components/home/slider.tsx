@@ -1,14 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
 import { SectionStyle } from '@components/home/style';
 import { IProduct, IProductHomeSlide } from '@lib/domain/interfaces/i-product';
+// import { APIGetListProducts } from '@lib/infra/products';
 import { getCurrenctySign } from '@lib/utils/common';
 import { gsap } from 'gsap';
 import { NextPage } from 'next';
 import Link from 'next/link';
-import { useCallback, useEffect, useState } from 'react';
-import Carousel from 'react-multi-carousel';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import 'react-multi-carousel/lib/styles.css';
 import { useMediaQuery } from 'react-responsive';
+// import { IUser } from '@lib/domain/interfaces/i-user';
+// import { fetcher } from '@lib/utils/fetcher';
+// import useSWR from 'swr';
+
+import Slider from 'react-slick';
 
 export type Props = {
     slideKey: string;
@@ -16,12 +21,37 @@ export type Props = {
     title: React.ReactNode;
     api: string;
     link: string;
-    products: IProduct[];
+    products?: IProduct[];
+};
+const SampleNextArrow = (props: any): JSX.Element => {
+    const { onClick } = props;
+
+    return (
+        <button
+            type='button'
+            className='slick-custom-arrow slick-next z-20 absolute   outline-none block'
+            onClick={onClick}
+        >
+            <img className='w-4 md:w-5' src='/images/arrow-next-slide.png' alt='background pattern' />
+        </button>
+    );
 };
 
+const SamplePrevArrow = (props: any): JSX.Element => {
+    const { onClick } = props;
+    return (
+        <button
+            type='button'
+            className='slick-custom-arrow slick-prev z-20 absolute outline-noneblock top-[50%]'
+            onClick={onClick}
+        >
+            <img className='w-4 md:w-5' src='/images/arrow-previous-slide.png' alt='background pattern' />
+        </button>
+    );
+};
 const SliderSection: NextPage<Props> = ({ products, slideKey, ...props }) => {
     const isMobileSize = useMediaQuery({ query: '(max-width: 768px)' });
-
+    // const { data } = APIGetListProducts({ api });
     const [cards, setCards] = useState<IProductHomeSlide[]>([]);
 
     useEffect(() => {
@@ -49,10 +79,9 @@ const SliderSection: NextPage<Props> = ({ products, slideKey, ...props }) => {
     }, [products]);
 
     const cardEffect = useCallback(
-        (previousSlide: number, { currentSlide: currentSlideNo }: { currentSlide: number }) => {
+        (previousSlide: number, currentSlide: number) => {
             if (products) {
-                const currentIndex =
-                    currentSlideNo >= products.length ? currentSlideNo % products.length : currentSlideNo;
+                const currentIndex = currentSlide >= products.length ? currentSlide % products.length : currentSlide;
 
                 setCards((prev) => {
                     return prev.map((product: IProductHomeSlide, index) => {
@@ -200,6 +229,7 @@ const SliderSection: NextPage<Props> = ({ products, slideKey, ...props }) => {
                 tl.restart();
             }
         }, []);
+
         return (
             <>
                 {products &&
@@ -222,7 +252,7 @@ const SliderSection: NextPage<Props> = ({ products, slideKey, ...props }) => {
                                         </figcaption>
                                     </div>
                                     <div className='wrap img-wrap'>
-                                        <div className='label'>HINATA</div>
+                                        <div className='label font-jost font-semibold'>HINATA</div>
                                         <div className='tab'>HAZAMA</div>
                                         <img className='frame' src='/assets/images/index/frame.png' alt='frame' />
                                         <div className='mask'>
@@ -261,14 +291,82 @@ const SliderSection: NextPage<Props> = ({ products, slideKey, ...props }) => {
     const button_all = (
         <div className='max-md:flex max-md:justify-center max-md:mt-2 max-md:mb-2'>
             <Link
-                className='button w-[22.2rem] h-[3.2rem] md:w-[24.167vw] md:h-[2.361vw] text-[1.4rem] md:text-[0.972vw] mt-1 md:mt-[2vw] rounded-[2rem] md:rounded-[1.389vw] flex justify-center items-center text-white'
+                className='button bg-gradient-orange w-[22.2rem] h-3.2 md:w-[24.167vw] md:h-[2.361vw] text-[1.4rem] md:text-[0.972vw] mt-1 md:mt-[2vw] rounded-[2rem] md:rounded-[1.389vw] flex justify-center items-center text-white'
                 href={props.link}
             >
-                VIEW ALL
+                <div className='relative'> VIEW ALL</div>
             </Link>
         </div>
     );
 
+    const isDesktop = useMediaQuery({ query: '(min-width: 1400px)' });
+    const isBigTable = useMediaQuery({ query: '(min-width: 1120px)' });
+    const isTable = useMediaQuery({ query: '(min-width: 900px)' });
+
+    const width = useMemo(() => {
+        let length = products ? products.length : 0;
+        if (isDesktop && length > 11) {
+            length = 11;
+        } else if (isBigTable && length > 9) {
+            length = 9;
+        } else if (isTable && length > 7) {
+            length = 7;
+        } else if (length > 5) {
+            length = 5;
+        }
+        if (isMobileSize) {
+            return length * 50 + length * 12 + 20;
+        }
+        return length * 82 + length * 20 + 82;
+    }, [products, isDesktop, isBigTable, isTable, isMobileSize]);
+
+    const SETTINGS = {
+        dots: false,
+        focusOnSelect: true,
+        centerMode: true,
+        centerPadding: '0px',
+
+        // variableWidth: true,
+        infinite: true,
+        slidesToShow: 11,
+        slidesToScroll: 1,
+        // centerPadding: '1%',
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />,
+        responsive: [
+            {
+                breakpoint: 1400,
+                settings: {
+                    slidesToShow: products && (products.length > 9 ? 9 : products.length),
+                },
+            },
+            {
+                breakpoint: 1120,
+                settings: {
+                    slidesToShow: products && (products.length > 7 ? 7 : products.length),
+                    centerMode: true,
+                },
+            },
+            {
+                breakpoint: 900,
+                settings: {
+                    slidesToShow: products && (products.length > 5 ? 5 : products.length),
+                    centerMode: true,
+                },
+            },
+            // {
+            //     breakpoint: 768,
+            //     settings: {
+            //         slidesToShow: products && (products.length > 3 ? 3 : products.length),
+            //         centerMode: true,
+            //     },
+            // },
+        ],
+        className: 'slider-template',
+        // initialSlide: 5,
+        speed: 300,
+        beforeChange: cardEffect,
+    };
     return (
         <SectionStyle isMobileSize={isMobileSize} productsLength={products?.length || 0}>
             <div className='main-section'>
@@ -276,7 +374,7 @@ const SliderSection: NextPage<Props> = ({ products, slideKey, ...props }) => {
                     <div className='subtitle max-md:mt-[12rem] max-md:mb-3 w-[19.2rem] h-[2.8rem] md:w-[10.972vw] md:h-[1.667vw] text-[1.2rem] md:text-[0.694vw] rounded-[1.5rem] md:rounded-[1.389vw] flex justify-center items-center border '>
                         RECOMMENDED PRODUCT
                     </div>
-                    <div className='title'>{props.title}</div>
+                    <div className='title font-semibold'>{props.title}</div>
                     {!isMobileSize && button_all}
                     <div className='dots-container'>
                         <span className='number'>{props.slideNo}</span>
@@ -296,51 +394,69 @@ const SliderSection: NextPage<Props> = ({ products, slideKey, ...props }) => {
                     <CardLayout name={`isCurrent`} key='isCurrent' />
                 </div>
             </div>
-            <div className='slider-section'>
-                {products ? (
-                    <Carousel
-                        className='items slider-items'
-                        infinite={true}
-                        swipeable={false}
-                        draggable={false}
-                        // autoPlay={true}
-                        // autoPlaySpeed={3000}
-                        focusOnSelect={true}
-                        responsive={{
-                            superLargeDesktop: {
-                                breakpoint: { max: 4000, min: 1536 },
-                                items: products.length > 12 ? 12 : products.length,
-                            },
-                            desktop: {
-                                breakpoint: { max: 1536, min: 1200 },
-                                items: products.length > 10 ? 10 : products.length,
-                            },
-                            tablet: {
-                                breakpoint: { max: 1200, min: 900 },
-                                items: products.length > 8 ? 8 : products.length,
-                            },
-                            largeMobile: {
-                                breakpoint: { max: 900, min: 0 },
-                                items: products.length > 6 ? 6 : products.length,
-                            },
-                        }}
-                        afterChange={cardEffect}
-                    >
-                        {products.map((product: IProduct) => (
-                            <figure key={product.id}>
-                                <div className='img-wrap'>
-                                    <img className='frame' src='/assets/images/index/frame.png' alt='frame product' />
-                                    <div className='mask'>
-                                        <img src={product.minimizedImage || ''} alt={product.name} />
+            <div className='relative'>
+                <div className={`slider-section`} style={{ width: `${width}px` }}>
+                    {products ? (
+                        // <Carousel
+                        //     className='items slider-items'
+                        //     infinite={true}
+                        //     swipeable={false}
+                        //     draggable={false}
+                        //     autoPlay={true}
+                        //     autoPlaySpeed={3000}
+                        //     focusOnSelect={true}
+                        //     responsive={{
+                        //         superLargeDesktop: {
+                        //             breakpoint: { max: 4000, min: 1536 },
+                        //             items: products.length > 12 ? 12 : products.length,
+                        //         },
+                        //         desktop: {
+                        //             breakpoint: { max: 1536, min: 1200 },
+                        //             items: products.length > 10 ? 10 : products.length,
+                        //         },
+                        //         tablet: {
+                        //             breakpoint: { max: 1200, min: 900 },
+                        //             items: products.length > 8 ? 8 : products.length,
+                        //         },
+                        //         largeMobile: {
+                        //             breakpoint: { max: 900, min: 0 },
+                        //             items: products.length > 6 ? 6 : products.length,
+                        //         },
+                        //     }}
+                        //     afterChange={cardEffect}
+                        // >
+                        //     {products.map((product: IProduct) => (
+                        //         <figure key={product.id}>
+                        //             <div className='img-wrap'>
+                        //                 <img className='frame' src='/assets/images/index/frame.png' alt='frame product' />
+                        //                 <div className='mask'>
+                        //                     <img src={product.minimizedImage || ''} alt={product.name} />
+                        //                 </div>
+                        //             </div>
+                        //         </figure>
+                        //     ))}
+                        // </Carousel>
+                        <Slider {...SETTINGS}>
+                            {products.map((product: IProduct) => (
+                                <figure key={product.id}>
+                                    <div className='img-wrap'>
+                                        <img
+                                            className='frame'
+                                            src='/assets/images/index/frame.png'
+                                            alt='frame product'
+                                        />
+                                        <div className='mask'>
+                                            <img src={product.minimizedImage || ''} alt={product.name} />
+                                        </div>
                                     </div>
-                                </div>
-                            </figure>
-                        ))}
-                    </Carousel>
-                ) : (
-                    <div />
-                )}
-                {isMobileSize && products && button_all}
+                                </figure>
+                            ))}
+                        </Slider>
+                    ) : (
+                        <div />
+                    )}
+                    {isMobileSize && products && button_all}
+                </div>
             </div>
             <img className='pattern' src='/assets/images/index/bg_pattern.png' alt='frame pattern' />
         </SectionStyle>

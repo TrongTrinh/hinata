@@ -6,7 +6,7 @@ const HomePageV = dynamic(() => import('@components/home'), {
 });
 const Home: NextPage = () => {
     return (
-        <Layout>
+        <Layout isHomePage={true}>
             <HomePageV />
         </Layout>
     );

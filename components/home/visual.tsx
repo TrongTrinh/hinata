@@ -241,41 +241,18 @@ const VisualSection: NextPage = () => {
     }, []);
 
     return (
-        <SectionStyle isMobileSize={isMobileSize} visualNo={visualNo}>
+        <SectionStyle className='visual-home' isMobileSize={isMobileSize} visualNo={visualNo}>
             <div className='visual'>
                 <img className='main' src={`assets/images/index/visual_${visualNo}.png`} alt='visual image' />
                 <div className='mask'>
                     <img src='assets/images/visual/red-thing.png' alt='Visual Red' />
                 </div>
             </div>
-
-            {/* .subtitle {
-            font-size: ${(props) => (props.isMobileSize ? '5.600vw' : '2.22vw')};
-            letter-spacing: 0.1em;
-            line-height: 3.211vw;
-
-            .title {
-            font-size: ${(props) => (props.isMobileSize ? '18vw' : '8.056vw')};
-            letter-spacing: 0.1em;
-            margin-left: -0.7vw;
-            line-height: 11.64vw;
-            background: -webkit-linear-gradient(left, #f1651b, #cb201b);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .description {
-            width: ${(props) => (props.isMobileSize ? '90%' : '20.833vw')};
-            font-size: ${(props) => (props.isMobileSize ? '1.0rem' : '0.903vw')};
-            font-weight: normal;
-            line-height: ${(props) => (props.isMobileSize ? '1.4' : '2.0')};
-        }
-        } */}
             <div className='top'>
-                <div className='subtitle text-[5.6vw] md:text-[2.22vw] leading-[8.093vw] md:leading-[3.211vw] max-md:font-medium '>
+                <div className='subtitle text-[5.6vw] md:text-[2.22vw] leading-[8.093vw] md:leading-[3.211vw] max-md:font-medium font-bold'>
                     NFT MARKET PLACE
                 </div>
-                <div className='title text-[18vw] md:text-[8.056vw] leading-[28.515vw] md:leading-[11.64vw]'>
+                <div className='title text-[18vw] md:text-[8.056vw] leading-[28.515vw] md:leading-[11.64vw] font-bold'>
                     HINATA
                 </div>
                 <div className='description w-[55.467vw] md:w-[20.833vw] text-[2.400vw] md:text-[0.903vw] leading-[4.533vw] md:leading-[1.806vw]'>
@@ -284,8 +261,7 @@ const VisualSection: NextPage = () => {
                     <br></br>
                     {`This new
                     digital world that NFT brings us will give you the new
-                    experience of expanding your possibility. Would you like to
-                    go to the next stage of your creativity with 'HINATA'?`}
+                    experience of expanding your possibility.`}
                 </div>
             </div>
 
@@ -571,14 +547,11 @@ const VisualSection: NextPage = () => {
 export default VisualSection;
 
 const SectionStyle = styled.div<{ isMobileSize: boolean; visualNo: number }>`
-    background: #ffffff;
-    background-image: url(assets/images/index/bg_wave.jpg);
-    background-size: cover;
     height: 100vh;
     height: 100dvh;
     position: relative;
     overflow: hidden;
-
+    animation: AnimateBG 20s ease infinite;
     .top {
         position: absolute;
         top: ${(props) => (props.isMobileSize ? '56%' : '54.5%')};

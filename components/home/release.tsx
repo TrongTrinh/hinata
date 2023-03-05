@@ -31,15 +31,15 @@ const ReleaseSection: NextPage = () => {
                     <div className='circle circle-4'></div>
                 </div>
                 <div className='top'>
-                    <div className='title mb-2.2 md:mb-2.8 mt-1 font-jost text-4.5 md:text-[9.3rem] leading-[6.5rem] md:leading-[13.5rem]'>
+                    <div className='title mb-2.2 md:mb-2.8 mt-1 font-jost text-4.5 md:text-[9.3rem] leading-[6.5rem] md:leading-[13.5rem] font-bold'>
                         RELEASE
                     </div>
                     <div className='description font-nato text-1.4 mb-3.2    md:mb-[5.1rem]'>出品はこちらから</div>
                     <Link
-                        href='/index-v2'
-                        className='button w-[22rem] md:w-[34.8rem] h-[3.2rem] text-[1.4rem] font-nato text-white rounded-[2rem] inline-flex items-center justify-center'
+                        href='/'
+                        className='button bg-gradient-orange w-[22rem] md:w-[34.8rem] h-3.2 text-[1.4rem] font-nato text-white rounded-[2rem] inline-flex items-center justify-center'
                     >
-                        出品する
+                        <span className='relative'> 出品する</span>
                     </Link>
                 </div>
             </div>
@@ -50,16 +50,12 @@ const ReleaseSection: NextPage = () => {
 export default ReleaseSection;
 
 const SectionStyle = styled.div<{ isMobileSize: boolean }>`
-    background: #ffffff;
-    background-image: url(assets/images/index/bg_wave.jpg);
-    background-size: cover;
     position: relative;
     overflow: hidden;
 
     .top {
         position: relative;
         .button {
-            background: linear-gradient(90deg, #f4691b, #cb211b);
             box-shadow: 2px 3px 4px 0px #00000033;
         }
     }

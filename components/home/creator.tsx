@@ -1,19 +1,28 @@
 /* eslint-disable @next/next/no-img-element */
 import CreatorItem from '@components/creators/item';
+import { APP_ROUTES } from '@lib/constants/routers';
+// import { APIGetListCreators } from '@lib/infra/creators';
 import { dummy_users } from '@lib/utils/dummy/users';
 import { NextPage } from 'next';
 import Link from 'next/link';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
+// import { IUser } from '@lib/domain/interfaces/i-user';
+// import { fetcher } from '@lib/utils/fetcher';
+// import useSWR from 'swr';
 
 const CreatorSection: NextPage = () => {
     const isMobileSize = useMediaQuery({ query: '(max-width: 768px)' });
 
     const creators = dummy_users;
+    // const { data } = APIGetListCreators();
 
     const button_orange = (
-        <Link href={`/creators`} className='button w-[66px] h-[32px] font-jost font-normal max-md:mt-3'>
-            ALL
+        <Link
+            href={`${APP_ROUTES.creators.path}`}
+            className='button bg-gradient-orange w-[66px] h-[32px] font-jost font-normal max-md:mt-3'
+        >
+            <span className='relative'> ALL</span>
         </Link>
     );
     return (
@@ -42,7 +51,6 @@ const SectionStyle = styled.div<{ isMobileSize: boolean }>`
         font-size: 1.4rem;
         color: #fff;
         text-decoration: none;
-        background: linear-gradient(135deg, #cb211b, #f4691b);
         border-radius: 20px;
         padding: 5px 25px;
         box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);

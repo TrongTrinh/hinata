@@ -2,6 +2,6 @@ version: '3'
 
 services:
     webapp:
-        container_name: hinata_web_ads_staging
+        container_name: hinata_app_staging
         ports:
-            - 3043:3000
+            - 3000:3000

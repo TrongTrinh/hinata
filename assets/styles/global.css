@@ -29,10 +29,31 @@ body {
 }
 
 .bg-gradient-orange {
+    position: relative;
     background: linear-gradient(135deg, #cb211b, #f4691b);
 }
+.bg-gradient-orange-link {
+    background: linear-gradient(135deg, #cb211b, #f4691b);
+}
+.bg-gradient-orange-red {
+    background: linear-gradient(292.16deg, #cb211b -2.65%, #f4691b 90.01%) !important;
+}
+/* .bg-gradient-orange::before {
+    position: absolute;
+    content: '';
+    inset: 0;  
+    background: linear-gradient(135deg, #f4691b, #cb211b);
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.25s linear;
+    border-radius: 9999px;
+}
+
+.bg-gradient-orange:hover::before {
+    opacity: 1;
+} */
 .bg-transparent {
-    background: transparent;
+    background: transparent !important;
 }
 .bg-gradient-search-box {
     background: linear-gradient(90deg, #3e3a39 -63.17%, #000000 162.81%);
@@ -42,7 +63,55 @@ body {
     background: linear-gradient(325.6deg, #ffffff -12%, #bdbdbd 166.85%);
 }
 
+.bg-gradient-category-detail-card {
+    background: linear-gradient(152.72deg, #000000 0.93%, #3e3a39 120.68%);
+}
+
 .fp-warning,
 .fp-watermark {
     display: none !important;
+}
+
+.text-gradient-yellow {
+    background: linear-gradient(
+        131.87deg,
+        #807728 2.19%,
+        #d3cc9b 24.59%,
+        #d2c996 32.49%,
+        #d1bf88 39.08%,
+        #ceb071 48.3%,
+        #cead6c 49.61%,
+        #a99352 56.2%,
+        #8b7d3c 61.47%,
+        #807534 65.42%,
+        #806f31 70.69%,
+        #805d25 77.28%,
+        #a78048 93.08%,
+        #6e4d28 99.67%,
+        #4d3015 103.62%,
+        #6f4e20 114.16%,
+        #805d25 120.75%,
+        #a78048 133.92%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.bg-btn-filter {
+    background: linear-gradient(0deg, #cececf, #cececf), linear-gradient(0deg, #ffffff, #ffffff);
+}
+
+.border-last-item-none > div:last-child {
+    border-bottom: none !important;
+    /* display: none; */
+}
+
+.right-0 {
+    right: 0rem !important;
 }

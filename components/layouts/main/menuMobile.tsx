@@ -1,18 +1,26 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
 import { ROUTES_MENU } from '@lib/config/common';
-import classnames from 'classnames';
+import { default as classNames, default as classnames } from 'classnames';
 import { isEmpty } from 'lodash';
 import Link from 'next/link';
 import Menu, { Item as MenuItem, SubMenu } from 'rc-menu';
 import 'rc-menu/assets/index.css';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
-const MenuTitle = ({ title }: { title: string }) => (
-    <span className=' max-lg:font-semibold text-1.8 lg:text-1.6 uppercase text-black flex items-center'>{title}</span>
+const MenuTitle = ({ title, isBgBlack }: { title: string; isBgBlack: boolean }) => (
+    <span
+        className={classNames(' max-lg:font-semibold text-1.8 lg:text-1.6 uppercase  flex items-center font-jost', {
+            'text-black': !isBgBlack,
+            'text-black md:text-white': isBgBlack,
+        })}
+    >
+        {title}
+    </span>
 );
 const MenuMobileTop = ({ setNavbarOpen }: { setNavbarOpen: any }) => (
     <div className='mb-1 mt-1'>
-        <div className='flex justify-between items-center h-12' key={'5-1'}>
+        <div className='flex justify-between items-center' key={'5-1'}>
             <Link
                 key={'5-1-1'}
                 href={'/'}
@@ -28,7 +36,7 @@ const MenuMobileTop = ({ setNavbarOpen }: { setNavbarOpen: any }) => (
         </div>
     </div>
 );
-const MenuMobile = ({ navbarOpen, setNavbarOpen }: any) => {
+const MenuMobile = ({ navbarOpen, setNavbarOpen, isBgBlack }: any) => {
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1024px)' });
     const isTabletCustom = useMediaQuery({ query: '(max-width: 1170px)' });
     return (
@@ -53,14 +61,14 @@ const MenuMobile = ({ navbarOpen, setNavbarOpen }: any) => {
                     if (item.children) {
                         return (
                             <SubMenu
-                                title={<MenuTitle title={item.name} />}
+                                title={<MenuTitle isBgBlack={isBgBlack} title={item.name} />}
                                 key={key}
-                                className={classnames(
-                                    'px-0 border-b max-lg:border-suva-grey max-lg:py-1.4 ml-0 lg:ml-3.2',
-                                    { 'lg:ml-1.2': isTabletCustom },
-                                )}
+                                className={classnames('px-0  max-lg:py-1.4 ml-0 lg:ml-3.2 bg-transparent', {
+                                    'lg:ml-1.2': isTabletCustom,
+                                })}
+                                popupClassName='fixed z-[11111]'
                             >
-                                {!isEmpty(item.children) &&
+                                {item.children &&
                                     item.children.map((sub_item, key_sub) => {
                                         return (
                                             <MenuItem
@@ -68,12 +76,13 @@ const MenuMobile = ({ navbarOpen, setNavbarOpen }: any) => {
                                                 className={classnames(
                                                     'bg-white p-0 py-1.4 lg:py-0.8 hover:none border-b max-lg:border-suva-grey ml-2 md:ml-1',
                                                     {
-                                                        'lg:border-none': key_sub + 1 === item.children.length,
+                                                        'lg:border-none':
+                                                            item?.children && key_sub + 1 === item?.children.length,
                                                     },
                                                 )}
                                             >
-                                                <Link href={sub_item.href} className='block'>
-                                                    <MenuTitle title={sub_item.name} />
+                                                <Link href={sub_item.link} className='block'>
+                                                    <MenuTitle isBgBlack={isBgBlack} title={sub_item.name} />
                                                 </Link>
                                             </MenuItem>
                                         );
@@ -89,8 +98,8 @@ const MenuMobile = ({ navbarOpen, setNavbarOpen }: any) => {
                                     { 'lg:ml-1.2': isTabletCustom },
                                 )}
                             >
-                                <Link href={item.href} className='block'>
-                                    <MenuTitle title={item.name} />
+                                <Link href={item.link} className='block'>
+                                    <MenuTitle isBgBlack={isBgBlack} title={item.name} />
                                 </Link>
                             </MenuItem>
                         );

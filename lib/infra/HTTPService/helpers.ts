@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { TypedEvent } from '@lib/helpers/event';
 // import APP_CONFIG from '@lib/constants/APP_CONFIG';
 // import CryptoJS from 'crypto-js';
@@ -429,9 +430,7 @@ export type UnauthorizedEvent = TypedEvent<HTTPStatusCode.UNAUTHORIZED>;
  * @param {ServerErrorData} serverError
  * @returns {string}
  */
-export const serverErrorDataToString = (
-    serverError: ServerErrorData,
-): string => {
+export const serverErrorDataToString = (serverError: ServerErrorData): string => {
     const { detail, error, message } = serverError;
     if (typeof error === 'string') return error;
     if (error && error.message) {
@@ -468,18 +467,12 @@ export const convertResponseApi = (results: any) => {
         };
     }
 
-    if (
-        (String(status).includes('401') && status === 401) ||
-        (data?.code !== 0 && String(data).includes('401'))
-    ) {
+    if ((String(status).includes('401') && status === 401) || (data?.code !== 0 && String(data).includes('401'))) {
         localStorage.clear();
         window.location.reload();
     }
 
-    if (
-        (String(status).includes('403') && status === 403) ||
-        (data?.code !== 0 && String(data).includes('403'))
-    ) {
+    if ((String(status).includes('403') && status === 403) || (data?.code !== 0 && String(data).includes('403'))) {
         return {
             message: 'Permission Denied',
         };
@@ -504,9 +497,7 @@ export const serialize = (object: any, prefix?: string) => {
         result.push(
             value !== null && typeof value === 'object'
                 ? serialize(value, prefixedKey)
-                : `${encodeURIComponent(prefixedKey)}=${encodeURIComponent(
-                      value,
-                  )}`,
+                : `${encodeURIComponent(prefixedKey)}=${encodeURIComponent(value)}`,
         );
     });
     return result.join('&');

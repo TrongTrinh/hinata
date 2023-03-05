@@ -19,7 +19,7 @@ fi
 echo "Deploying $2 branch to $1"
 git fetch origin && git checkout $2 && git merge origin/$2
 
-echo "Overwriting .env with .env-$1"
+echo "Overwriting .env with .env.$1"
 cp ".env.$1" .env
 
 docker network create --driver bridge "hinata_web_ads_network" || true

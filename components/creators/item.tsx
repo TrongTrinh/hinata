@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { APP_ROUTES } from '@lib/constants/routers';
 import { ICreatorItemProps } from '@lib/domain/creator';
 import classNames from 'classnames';
 import Link from 'next/link';
@@ -14,7 +15,7 @@ const CreatorItem: FC<ICreatorItemProps> = ({
 }) => {
     return (
         <figure className={classNames('border-b', className)}>
-            <Link href={`/creators/${item.slug || item.id}`} className='flex items-center'>
+            <Link href={`${APP_ROUTES.creators.path}/${item.slug || item.id}`} className='flex items-center'>
                 <div>
                     <img
                         className={classNames('object-cover mr-2 rounded-full mb-1.6', size, classImg)}

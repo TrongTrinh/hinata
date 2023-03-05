@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 const Footer: NextPage = () => {
     return (
-        <div className=' text-center bg-white container mx-auto md:pt-[5.6rem] pt-5 pb-[3.5rem] md:pb-2.4'>
+        <div className=' text-center  container mx-auto md:pt-[5.6rem] pt-5 pb-[3.5rem] md:pb-2.4'>
             <div className='logo flex justify-center'>
                 <Link href='/'>
                     <img width={142} height={3.56} src='/assets/images/common/header-logo.svg' alt='HINATA' />

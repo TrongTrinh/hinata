@@ -1,12 +1,17 @@
 import { IPageProps } from '@lib/domain/page';
+import classNames from 'classnames';
 import Layout from 'components/layouts/main';
 import { createGlobalStyle } from 'styled-components';
 
-const PageLayout = ({ children }: IPageProps) => {
+const PageLayout = ({ className, children }: IPageProps) => {
     return (
         <Layout>
             <GlobalStyle />
-            <div className='container mx-auto pb-[9rem] md:pb-[11rem] mt-[8rem] md:mt-[18.3rem]'>{children}</div>
+            <div
+                className={classNames(`container mx-auto pb-[9rem] md:pb-[11rem] mt-[2rem] md:mt-[10.5rem]`, className)}
+            >
+                {children}
+            </div>
         </Layout>
     );
 };

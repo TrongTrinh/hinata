@@ -26,7 +26,23 @@ const GlobalStyle = createGlobalStyle`
     'Hiragino Sans',
     Meiryo,
     sans-serif;
-  }
+    background: #ffffff;
+     background-image: url(/assets/images/index/bg_wave.jpg);
+     background-size: 110% 100%;
+     animation: AnimateBG 15s linear infinite; 
+  } 
+@keyframes AnimateBG {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
   a {
     color: #000000;
     text-decoration: none;

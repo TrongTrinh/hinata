@@ -70,7 +70,7 @@ const SearchFilterBox: FC<ISearchFilterSectionProps> = ({ className }) => {
             <div className='flex justify-center'>
                 <button
                     onClick={onClickSearch}
-                    className='text-1.4 w-[22rem] h-[3.2rem] border border-white-smoke rounded-[1.6rem]'
+                    className='text-1.4 w-[22rem] h-3.2 border border-white-smoke rounded-[1.6rem]'
                 >
                     SEARCH
                 </button>

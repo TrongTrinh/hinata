@@ -1,0 +1,294 @@
+.move-line-card-left-to-right {
+    animation: move-line-card-left-to-right 4s ease-in-out infinite;
+}
+
+@keyframes move-line-card-left-to-right {
+    0% {
+        left: 0%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    50% {
+        left: 28%;
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.move-line-card-right-to-left {
+    animation: move-line-card-right-to-left 4s ease-in-out infinite;
+}
+@keyframes move-line-card-right-to-left {
+    0% {
+        left: 20%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    50% {
+        left: -8%;
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.list-stars .star1 {
+    animation: star1 4s ease-in-out infinite;
+}
+.list-stars .star2 {
+    animation: star2 4s ease-in-out infinite;
+}
+.list-stars .star3 {
+    animation: star3 4s ease-in-out infinite;
+}
+.list-stars .star4 {
+    animation: star4 4s ease-in-out infinite;
+}
+.list-stars .star5 {
+    animation: star5 4s ease-in-out infinite;
+}
+.list-stars .star6 {
+    animation: star6 4s ease-in-out infinite;
+}
+.list-stars .star7 {
+    animation: star7 4s ease-in-out infinite;
+}
+.list-stars .star8 {
+    animation: star8 4s ease-in-out infinite;
+}
+.list-stars .star9 {
+    animation: star9 4s ease-in-out infinite;
+}
+.list-stars .star10 {
+    animation: star10 4s ease-in-out infinite;
+}
+
+@keyframes star1 {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate(20px, 10px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes star2 {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate(50px, 10px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes star3 {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate(100px, 30px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes star4 {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate(50px, 60px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes star1 {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate(40px, 30px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes star5 {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-20px, -10px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes star6 {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate(15px, 30px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes star1 {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-20px, 15px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes star7 {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-20px, 40px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes star8 {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate(30px, -10px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes star9 {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-30px, 20px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes star10 {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-10px, -20px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}

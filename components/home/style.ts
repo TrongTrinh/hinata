@@ -4,39 +4,16 @@ export const SectionStyle = styled.div<{
     isMobileSize: boolean;
     productsLength: number;
 }>`
-    background: #ffffff;
-    background-image: url(/assets/images/index/bg_wave.jpg);
-    background-size: ${(props) => (props.isMobileSize ? '200%' : 'cover')};
     height: 100vh;
     height: 100dvh;
     display: flex;
     flex-direction: column;
 
     .slider-section {
-        padding: ${(props) => (props.isMobileSize ? '20px 3vw' : '2.778vw 10vw')};
+        padding: ${(props) => (props.isMobileSize ? '20px 0' : '2.778vw 0')};
+        margin: 0 auto;
         z-index: 2;
-        .slider-items:before {
-            content: '';
-            top: 0;
-            left: 0;
-            bottom: 0;
-            position: absolute;
-            width: 150px;
-            z-index: 1;
-            background: linear-gradient(90deg, #ffffff 29.17%, rgba(255, 255, 255, 0) 100%);
-        }
-        .slider-items:after {
-            content: '';
-            top: 0;
-            right: 0;
-            bottom: 0;
-            position: absolute;
-            width: 150px;
-            z-index: 1;
-            background: linear-gradient(-90deg, #e7e7e7 29.17%, rgba(231, 231, 231, 0) 100%);
-        }
         figure {
-            padding: ${(props) => (props.isMobileSize ? '5px' : '0 10px')};
             .img-wrap {
                 position: relative;
                 width: 100%;
@@ -69,6 +46,56 @@ export const SectionStyle = styled.div<{
                     display: block;
                 }
             }
+        }
+        .slick-slide > div {
+            width: 82px !important;
+            @media (max-width: 768px) {
+                width: 50px !important;
+            }
+        }
+        .slick-current > div {
+            width: 95px !important;
+            margin-left: -5px;
+            @media (max-width: 768px) {
+                width: 60px !important;
+            }
+        }
+        .slick-track {
+            gap: 20px;
+            @media (max-width: 768px) {
+                gap: 12px;
+            }
+        }
+    }
+    .slider-template .slick-slider.slick-initialized {
+        display: flex;
+        align-items: center;
+    }
+    .slider-template .slick-track {
+        display: flex !important;
+        align-items: center;
+    }
+    .slick-custom-arrow {
+        width: ${(props) => (props.isMobileSize ? '40px' : '50px')};
+        height: ${(props) => (props.isMobileSize ? '40px' : '50px')};
+    }
+    .slick-custom-arrow:hover {
+        opacity: 0.8;
+    }
+    .slick-custom-arrow::before {
+        color: #ffffff;
+        display: none;
+    }
+    .slick-custom-arrow.slick-prev {
+        left: -8px;
+        @media (max-width: 768px) {
+            left: -9px;
+        }
+    }
+    .slick-custom-arrow.slick-next {
+        right: -17px;
+        @media (max-width: 768px) {
+            right: -15px;
         }
     }
 
@@ -265,32 +292,14 @@ export const SectionStyle = styled.div<{
     }
 
     .button {
-        background: linear-gradient(135deg, #f4691b, #cb211b);
         box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     }
 
-    .react-multi-carousel-list {
-        width: ${(props) => (props.productsLength < 6 ? props.productsLength + 1 + '0%' : '100%')};
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .react-multiple-carousel__arrow {
-        background: linear-gradient(135deg, #cb211b, #f4691b);
-        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        margin: 3px;
-        width: ${(props) => (props.isMobileSize ? '40px' : '43px')};
-        height: ${(props) => (props.isMobileSize ? '40px' : '43px')};
-    }
-    .react-multiple-carousel__arrow::before {
-        color: #ffffff;
-    }
-    .react-multiple-carousel__arrow--left {
-        left: 0;
-    }
-    .react-multiple-carousel__arrow--right {
-        right: 0;
-    }
+    // .react-multi-carousel-list {
+    //     width: ${(props) => (props.productsLength < 6 ? props.productsLength + 1 + '0%' : '100%')};
+    //     margin-left: auto;
+    //     margin-right: auto;
+    // }
 
     .pattern {
         position: absolute;
@@ -298,6 +307,7 @@ export const SectionStyle = styled.div<{
         left: 0;
         width: ${(props) => (props.isMobileSize ? '35%' : 'auto')};
         transform: rotateX(180deg);
+        z-index: -1;
     }
 
     .dots-container {

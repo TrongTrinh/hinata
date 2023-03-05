@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import MagazineItem from '@components/magazine/item';
-import { magazine_dummy } from '@lib/utils/dummy/magazine';
+import { APP_ROUTES } from '@lib/constants/routers';
+import { MagazinHooks } from '@lib/infra/magazine';
 import { isEmpty } from 'lodash';
 import { NextPage } from 'next';
 import Link from 'next/link';
@@ -31,66 +32,15 @@ const MagazineSection: NextPage = () => {
         },
     };
 
-    const posts = magazine_dummy;
-    // const [posts, setPosts] = useState<WpPost[]>([]);
-    // const [wpPostsLoading, setWpPostsLoading] = useState<boolean>(false);
-    // console.log('🚀 ~ file: magazine.tsx ~ line 36 ~ wpPostsLoading', wpPostsLoading);
-
-    // useEffect(() => {
-    //     setWpPostsLoading(true);
-
-    //     (async () => {
-    //         try {
-    //             const { data: wpPosts } = await axios.get(
-    //                 `https://www.official.hinata-nft.com/wp-json/wp/v2/posts?per_page=8&status=publish`,
-    //             );
-
-    //             const mediaAddedPosts: WpPost[] = await Promise.all(
-    //                 wpPosts
-    //                     .map((post: WpPost) => {
-    //                         if (post.featured_media === 0) return null;
-
-    //                         return axios
-    //                             .get(`https://www.official.hinata-nft.com/wp-json/wp/v2/media/${post.featured_media}`)
-    //                             .then(({ data: media }) => {
-    //                                 return {
-    //                                     ...post,
-    //                                     media,
-    //                                 };
-    //                             });
-    //                     })
-    //                     .filter((post: WpPost) => post !== null),
-    //             );
-
-    //             const categoryAddedPosts: WpPost[] = await Promise.all(
-    //                 mediaAddedPosts.map((post: WpPost) => {
-    //                     return axios
-    //                         .get(`https://www.official.hinata-nft.com/wp-json/wp/v2/categories/${post.categories[0]}`)
-    //                         .then(({ data: category }) => {
-    //                             return {
-    //                                 ...post,
-    //                                 category,
-    //                             };
-    //                         });
-    //                 }),
-    //             );
-
-    //             setPosts(categoryAddedPosts);
-    //         } catch (err) {
-    //             console.log(err);
-    //         }
-
-    //         setWpPostsLoading(false);
-    //     })();
-    // }, []);
+    const { posts } = MagazinHooks();
 
     const buttonAll = (
         <div className='flex justify-center'>
             <Link
-                href={`/magazine`}
-                className='w-[6.6rem] h-[3.2rem] font-jost font-normal text-1.4 max-md:mt-2 shadow-black-0.5 bg-gradient-orange rounded-[2rem] flex justify-center items-center text-white '
+                href={`${APP_ROUTES.magazine.path}`}
+                className='w-[6.6rem] h-3.2 font-jost font-normal text-1.4 max-md:mt-2 shadow-black-0.5 bg-gradient-orange rounded-[2rem] flex justify-center items-center text-white '
             >
-                ALL
+                <span className='relative'> ALL</span>
             </Link>
         </div>
     );

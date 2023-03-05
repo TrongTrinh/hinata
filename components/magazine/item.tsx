@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { APP_ROUTES } from '@lib/constants/routers';
 import { IMagazineItemProps } from '@lib/domain/magazine';
 import classnames from 'classnames';
 import dayjs from 'dayjs';
@@ -15,7 +16,7 @@ const MagazineItem: FC<IMagazineItemProps> = ({ item, className, marginB = '' })
                 marginB,
             )}
         >
-            <Link href={item.link}>
+            <Link href={`${APP_ROUTES.magazine.path}/magazine-detail`}>
                 <div className='w-auto h-auto relative before before:pt-[32.267rem] md:before:pt-[26.4rem] before:block'>
                     <img
                         className='w-full h-full absolute top-0 left-0 object-cover rounded-md'
@@ -26,7 +27,7 @@ const MagazineItem: FC<IMagazineItemProps> = ({ item, className, marginB = '' })
                         alt={item.media.alt_text}
                     />
                 </div>
-                <figcaption className='font-bold font-nato text-1.8 md:text-1.5 leading-[2.6rem] md:leading-2 my-1 md:mt-0.6 md:mb-1 px-[1.672rem] md:px-0.6  max-h-[5.2rem] md:max-h-[4.4rem] overflow-hidden '>
+                <figcaption className='font-bold font-nato text-1.8 md:text-1.5 leading-[2.6rem] md:leading-2 my-1 md:mt-0.6 md:mb-1 px-[1.672rem] md:px-0.6  max-h-[5.2rem] md:max-h-[5.2rem] overflow-hidden '>
                     {item.title.rendered}
                 </figcaption>
                 <hr className='my-8 h-px border-[#CECECF] border-1.6' />

@@ -10,19 +10,20 @@ import { v2Container } from '@lib/hocs/with-v2-container';
 import { ProductsAuctionDummy } from '@lib/utils/dummy/products_auction';
 import { ProductsChoiceDummy } from '@lib/utils/dummy/products_choice';
 import { FC } from 'react';
-const pluginWrapper = () => {
-    require('assets/statics/fullpage.fadingEffect.min');
-    require('assets/statics/fullpage.scrollHorizontally.min');
-};
 
 const Home: FC = () => {
+    const pluginWrapper = () => {
+        require('assets/statics/fullpage.fadingEffect.min');
+        require('assets/statics/fullpage.scrollHorizontally.min');
+    };
     return (
         <ReactFullpage
             pluginWrapper={pluginWrapper}
             licenseKey={'G5ZKK-S9DLH-AK3A7-H8JMJ-OYYUL'}
-            scrollingSpeed={700}
+            scrollingSpeed={1000}
             fadingEffectKey={'SUlhR2x1WVhSaExXNW1kQzVqYjIwPW5LX3Y3WVptRmthVzVuUldabVpXTjA4blk='}
-            fadingEffect={'slides'}
+            // type FadingEffect = boolean | "sections" | "slides";
+            // fadingEffect={'slides'}
             scrollHorizontallyKey={'MDZhR2x1WVhSaExXNW1kQzVqYjIwPU01X1d4bmMyTnliMnhzU0c5eWFYcHZiblJoYkd4NTYyag=='}
             scrollHorizontally={true}
             slidesNavigation={false}

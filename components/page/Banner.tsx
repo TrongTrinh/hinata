@@ -1,10 +1,16 @@
 import { IPageBannerProps } from '@lib/domain/page';
+import classNames from 'classnames';
 import React, { FC } from 'react';
 
-const PageBanner: FC<IPageBannerProps> = ({ title, className }) => {
+const PageBanner: FC<IPageBannerProps> = ({ classNameTitle, title, className }) => {
     return (
         <div className={className}>
-            <h1 className=' uppercase leading-[6.5rem] md:leading-[13.5rem] text-[4.5rem] md:text-[9.4rem] mb-2'>
+            <h1
+                className={classNames(
+                    'uppercase leading-[6.5rem] md:leading-[13.5rem] text-[4.5rem] md:text-[9.4rem] mb-2',
+                    classNameTitle,
+                )}
+            >
                 {title}
             </h1>
         </div>

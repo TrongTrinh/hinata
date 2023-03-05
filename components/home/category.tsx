@@ -1,23 +1,29 @@
 /* eslint-disable @next/next/no-img-element */
+import { APP_ROUTES } from '@lib/constants/routers';
 import { ICategory } from '@lib/domain/interfaces/i-category';
+// import { APIGetListCategory } from '@lib/infra/category';
 import { categories_dummy } from '@lib/utils/dummy/categories';
 import { NextPage } from 'next';
 import Link from 'next/link';
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
+// import { IUser } from '@lib/domain/interfaces/i-user';
+// import { fetcher } from '@lib/utils/fetcher';
+// import useSWR from 'swr';
 
 const CategorySection: NextPage = () => {
     const isMobileSize = useMediaQuery({ query: '(max-width: 768px)' });
 
     const categories = categories_dummy;
+    // const { data } = APIGetListCategory()
     const buttonAll = (
         <div className='flex justify-center'>
             <Link
-                href={`/category`}
-                className='w-[6.6rem] h-[3.2rem] font-jost font-normal text-1.4 max-md:mt-2 shadow-black-0.5 bg-gradient-orange rounded-[2rem] flex justify-center items-center text-white '
+                href={`${APP_ROUTES.works.path}`}
+                className='w-[6.6rem] h-3.2 font-jost font-normal text-1.4 max-md:mt-2 shadow-black-0.5 bg-gradient-orange rounded-[2rem] flex justify-center items-center text-white '
             >
-                ALL
+                <span className='relative'> ALL</span>
             </Link>
         </div>
     );
@@ -33,7 +39,7 @@ const CategorySection: NextPage = () => {
                 {categories &&
                     categories.map((category: ICategory) => (
                         <figure key={category.id} className='rounded-[0.6rem] p-0.4 sm:p-0.9'>
-                            <Link href={`/category`}>
+                            <Link href={`${APP_ROUTES.works.path}`}>
                                 {/* width: 100%; height: 100%; position: absolute; top: 0; left: 0; object-fit: cover;
                                 border-radius: 0.4rem; */}
                                 <div className='w-auto h-auto relative before:pt-[65%] before:block'>
@@ -60,10 +66,6 @@ const CategorySection: NextPage = () => {
 export default CategorySection;
 
 const SectionStyle = styled.div<{ isMobileSize: boolean }>`
-    background: #ffffff;
-    background-image: url(assets/images/index/bg_wave.jpg);
-    background-size: ${(props) => (props.isMobileSize ? '200%' : 'cover')};
-
     .top {
         display: flex;
         justify-content: center;

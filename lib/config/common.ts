@@ -1,105 +1,114 @@
-type TROUTES = {
+import { APP_ROUTES } from '@lib/constants/routers';
+type TROUTER = {
     link: string;
     name: string;
 };
-
+type TROUTES = {
+    link: string;
+    name: string;
+    children?: TROUTER;
+};
+export type TMENU_ROUTES = {
+    link: string;
+    name: string;
+    children?: TROUTER[];
+};
 export const ROUTES_FOOTER: TROUTES[] = [
-    { link: 'https://www.official.hinata-nft.com/legal/', name: 'Legal Information' },
+    { link: '/legal-information', name: 'Legal Information' },
 
-    { link: 'https://www.official.hinata-nft.com/privacy/', name: 'Privacy Policy' },
+    { link: '/privacy-policy', name: 'Privacy Policy' },
 
-    { link: 'https://www.official.hinata-nft.com/terms-of-use/', name: 'Terms of Use' },
+    { link: 'terms-of-use', name: 'Terms of Use' },
 
-    { link: 'https://www.official.hinata-nft.com/terms-of-payment/', name: 'Terms of Payment' },
+    { link: '/term-of-payment', name: 'Terms of Payment' },
 
-    { link: 'https://www.official.hinata-nft.com/company/', name: 'Company' },
+    { link: '/company', name: 'Company' },
 ];
-
-export const ROUTES_MENU = [
+export const ROUTES_MENU: TMENU_ROUTES[] = [
     {
-        href: '/about',
+        link: '/about',
         name: 'about',
     },
     {
-        href: '/creators',
+        link: '/creators',
         name: 'creators',
     },
     {
-        href: '/category',
+        link: '/category',
         name: 'Category',
         children: [
             {
-                href: '/works',
+                link: '/works',
                 name: 'All',
             },
             {
-                href: '/works/browse/Art',
+                link: '/works',
                 name: 'Art',
             },
             {
-                href: '/works/browse/Illustration',
+                link: '/works',
                 name: 'Illustration',
             },
             {
-                href: '/works/browse/Graphic',
+                link: '/works',
                 name: 'Graphic',
             },
             {
-                href: '/works/browse/Movie',
+                link: '/works',
                 name: 'Movie',
             },
             {
-                href: '/works/browse/Music',
+                link: '/works',
                 name: 'Music',
             },
         ],
     },
     {
-        href: '/magazine',
+        link: '/magazine',
         name: 'MAGAZINE',
         children: [
             {
-                href: 'https://www.official.hinata-nft.com/all?avator=&amp;firstname=&amp;bucket=hinata-stg-images',
+                link: APP_ROUTES.magazine.path,
                 name: 'All Category',
             },
             {
-                href: 'https://www.official.hinata-nft.com/category/art?avator=&amp;firstname=&amp;bucket=hinata-stg-images',
+                link: APP_ROUTES.magazine.path,
                 name: 'Art',
             },
             {
-                href: 'https://www.official.hinata-nft.com/category/campaign?avator=&amp;firstname=&amp;bucket=hinata-stg-images',
+                link: APP_ROUTES.magazine.path,
                 name: 'Campaign',
             },
             {
-                href: 'https://www.official.hinata-nft.com/category/domain?avator=&amp;firstname=&amp;bucket=hinata-stg-images',
+                link: APP_ROUTES.magazine.path,
                 name: 'Domain',
             },
             {
-                href: 'https://www.official.hinata-nft.com/category/game?avator=&amp;firstname=&amp;bucket=hinata-stg-images',
+                link: APP_ROUTES.magazine.path,
                 name: 'Game',
             },
             {
-                href: 'https://www.official.hinata-nft.com/category/graphic?avator=&amp;firstname=&amp;bucket=hinata-stg-images',
+                link: APP_ROUTES.magazine.path,
                 name: 'Graphic',
             },
             {
-                href: 'https://www.official.hinata-nft.com/category/illustration?avator=&amp;firstname=&amp;bucket=hinata-stg-images',
+                link: APP_ROUTES.magazine.path,
                 name: 'Illustration',
             },
             {
-                href: 'https://www.official.hinata-nft.com/category/movie?avator=&amp;firstname=&amp;bucket=hinata-stg-images',
+                link: APP_ROUTES.magazine.path,
                 name: 'Movie',
             },
             {
-                href: 'https://www.official.hinata-nft.com/category/music?avator=&amp;firstname=&amp;bucket=hinata-stg-images',
+                link: APP_ROUTES.magazine.path,
                 name: 'Music',
             },
             {
-                href: 'https://www.official.hinata-nft.com/category/official?avator=&amp;firstname=&amp;bucket=hinata-stg-images',
+                link: APP_ROUTES.magazine.path,
                 name: 'Official',
             },
             {
-                href: 'https://www.official.hinata-nft.com/category/photography?avator=&amp;firstname=&amp;bucket=hinata-stg-images',
+                link: APP_ROUTES.magazine.path,
                 name: 'Photography',
             },
         ],

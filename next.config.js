@@ -17,7 +17,7 @@ const nextConfig = {
     //     return [
     //         {
     //             source: '/:path+',
-    //             destination: `${NEXT_PUBLIC_APP_URL}/:path+`,
+    //             destination: `${NEXT_PUBLIC_APP_ENDPOINT}/:path+`,
     //             permanent: false,
     //         },
     //     ];
