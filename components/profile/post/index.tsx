@@ -31,7 +31,7 @@ const CategoryDetailPage = () => {
                 <div className='clearfix relative pt-[3.046rem] md:pt-[12.8rem] overflow-hidden'>
                     {isBigTabletSize && btnBack}
                     <CategoryDetailCard />
-                    <CardInfoBlack page='my_collection' classBtnBack='text-white'>
+                    <CardInfoBlack page='my_collection' classBtnBack='text-white' classWrapInfo='card-info-profile'>
                         <CardInfoBlackUser />
                         <div className='border-t border-eclipse pt-2 md:pt-2.6 max-md:mt-4'>
                             <h2 className='text-1.5 md:text-1.8 md:leading-[2.606rem]'>アイテム詳細</h2>

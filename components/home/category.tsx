@@ -31,7 +31,7 @@ const CategorySection: NextPage = () => {
         <SectionStyle isMobileSize={isMobileSize} className='pt-5 md:pt-[9.9rem] pb-[5.6rem] md:pb-[13.1rem]'>
             {/* <div className='text-3 leading-[4.35rem]  pb-2 md:pb-3 text-center font-jost'>CATEGORY</div> */}
             <div className='flex justify-center items-center mb-2 md:mb-3'>
-                <div className='text-3 mr-2 text-center leading-[4.35rem]'>CATEGORY</div>
+                <div className='text-3 mr-2 text-center leading-[4.35rem] font-jost'>CATEGORY</div>
                 {!isMobileSize && categories && buttonAll}
             </div>
 

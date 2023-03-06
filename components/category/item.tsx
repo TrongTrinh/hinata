@@ -12,7 +12,7 @@ const Category: FC<ICategoryItemProps> = ({ item, className, positionItem, linkD
     const image3 =
         positionItem == 1 ? 'violet' : positionItem === 2 ? 'yellow' : positionItem === 3 ? 'white' : 'black';
     return (
-        <Link href={linkDetail || `${APP_ROUTES.works.path} + '/dsadsad`}>
+        <Link href={linkDetail || `${APP_ROUTES.works.path}/product-detail`}>
             <CateforyItemStyle
                 className={classNames(
                     `category-position-${positionItem} relative w-[26.9rem] h-[37.5rem] clear-both`,
@@ -25,7 +25,7 @@ const Category: FC<ICategoryItemProps> = ({ item, className, positionItem, linkD
                     src={`/assets/images/category/${image1}.svg`}
                 />
 
-                <div className='absolute left-[15rem] tracking-[0.4rem] top-0.8 flex items-center'>
+                <div className='absolute left-[14rem] tracking-[0.4rem] top-0.8 flex items-center'>
                     <img
                         className='w-[1rem] h-[1rem]'
                         alt='category frame 1'

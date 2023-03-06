@@ -8,7 +8,7 @@ import Menu, { Item as MenuItem, SubMenu } from 'rc-menu';
 import 'rc-menu/assets/index.css';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
-const MenuTitle = ({ title, isBgBlack }: { title: string; isBgBlack: boolean }) => (
+const MenuTitle = ({ title, isBgBlack = false }: { title: string; isBgBlack?: boolean }) => (
     <span
         className={classNames(' max-lg:font-semibold text-1.8 lg:text-1.6 uppercase  flex items-center font-jost', {
             'text-black': !isBgBlack,
@@ -82,7 +82,7 @@ const MenuMobile = ({ navbarOpen, setNavbarOpen, isBgBlack }: any) => {
                                                 )}
                                             >
                                                 <Link href={sub_item.link} className='block'>
-                                                    <MenuTitle isBgBlack={isBgBlack} title={sub_item.name} />
+                                                    <MenuTitle title={sub_item.name} />
                                                 </Link>
                                             </MenuItem>
                                         );

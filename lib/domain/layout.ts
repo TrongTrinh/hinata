@@ -3,4 +3,5 @@ export interface ILayoutProps {
     isHomePage?: boolean;
     page?: string;
     classBtnBack?: string;
+    classWrapInfo?: string;
 }
