@@ -63,6 +63,18 @@ const Category: FC<ICategoryItemProps> = ({ item, className, positionItem, linkD
                         }
                     />
                 </div>
+
+                <img
+                    className='move-card-product-left-to-right absolute  top-[1.2rem] w-[12rem] h-[4rem]'
+                    alt='category frame 3'
+                    src={`/assets/images/category/light.png`}
+                />
+
+                <img
+                    className=' z-[999] move-card-product-right-to-left absolute  top-[24.5rem] w-[12rem] h-[4rem]'
+                    alt='category frame 3'
+                    src={`/assets/images/category/light.png`}
+                />
                 <div className='content w-[24.2rem] h-[11.2rem] absolute bottom-0 rounded-lg opacity-[0.9]'></div>
                 <div className='content w-[24.2rem] h-[11.2rem] absolute bottom-0 rounded-lg px-0.9 pt-0.8 pb-0.8 font-nato'>
                     <h2 className='title font-medium text-1.3 leading-[1.882rem] mb-0.1 uppercase flex items-center justify-between'>

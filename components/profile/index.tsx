@@ -46,7 +46,7 @@ const CreatorItem: FC<ICreatorPageProps> = () => {
             <div>
                 <img src='/assets/images/account/banner.png' className='w-full' alt='banner create details' />
             </div>
-            <div className='bg-[url(/assets/images/account/background.jpg)] bg-contain relative before before:z-1 before:bg-black-0.8  before:top-0 before:left-0 before:right-0 before:bottom-0  before:absolute'>
+            <div className=' '>
                 <div className='container mx-auto relative'>
                     <div className='mx-auto flex max-md:flex-col'>
                         <div className='mr-[5.8rem] -mt-4 md:-mb-4 md:-mt-[7.4rem] w-[100%] md:w-[27%]'>

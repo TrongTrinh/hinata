@@ -38,4 +38,4 @@ const Home: FC = () => {
     );
 };
 
-export default v2Container(Home);
+export default Home;

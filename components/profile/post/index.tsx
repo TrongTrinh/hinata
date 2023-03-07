@@ -26,7 +26,7 @@ const CategoryDetailPage = () => {
         console.log('🚀 ~ file: index.tsx ~ line 29 ~ onClickShowMore ~ onClickShowMore', onClickShowMore);
     }, []);
     return (
-        <div className='bg-[url(/assets/images/account/background.jpg)] bg-contain relative'>
+        <div>
             <div className='container mx-auto'>
                 <div className='clearfix relative pt-[3.046rem] md:pt-[12.8rem] overflow-hidden'>
                     {isBigTabletSize && btnBack}
