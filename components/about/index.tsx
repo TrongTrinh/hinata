@@ -1,7 +1,6 @@
 import VisualSection from '@components/about/visual';
 import Footer from '@components/layouts/main/footer';
 import ReactFullpage from '@fullpage/react-fullpage';
-import { v2Container } from '@lib/hocs/with-v2-container';
 import { FC } from 'react';
 
 const Home: FC = () => {
