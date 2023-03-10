@@ -325,14 +325,13 @@ const SliderSection: NextPage<Props> = ({ products, slideKey, ...props }) => {
         focusOnSelect: true,
         centerMode: true,
         centerPadding: '0px',
-
-        // variableWidth: true,
+        autoplay: true,
         infinite: true,
         slidesToShow: 11,
         slidesToScroll: 1,
-        // centerPadding: '1%',
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
+        autoplaySpeed: 4000,
         responsive: [
             {
                 breakpoint: 1400,
@@ -363,8 +362,6 @@ const SliderSection: NextPage<Props> = ({ products, slideKey, ...props }) => {
             // },
         ],
         className: 'slider-template',
-        // initialSlide: 5,
-        speed: 300,
         beforeChange: cardEffect,
     };
     return (

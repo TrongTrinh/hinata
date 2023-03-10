@@ -1,3 +1,50 @@
+.move-card-product-left-to-right {
+    animation: move-card-product-left-to-right 4s ease-in-out infinite;
+}
+
+@keyframes move-card-product-left-to-right {
+    0% {
+        left: 20%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    50% {
+        left: 64%;
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.move-card-product-right-to-left {
+    animation: move-card-product-right-to-left 4s ease-in-out infinite;
+}
+
+@keyframes move-card-product-right-to-left {
+    0% {
+        left: 54%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    50% {
+        left: 10%;
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
 .move-line-card-left-to-right {
     animation: move-line-card-left-to-right 4s ease-in-out infinite;
 }

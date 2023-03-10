@@ -584,14 +584,9 @@ const VisualSection: NextPage = () => {
 export default VisualSection;
 
 const SectionStyle = styled.div<{ isMobileSize: boolean; visualNo: number }>`
-    background-image: url('/assets/images/index/bg_wave.jpg');
-    background-repeat: ${(props) => (props.isMobileSize ? '' : 'no-repeat')};
-    background-size: 150%;
     height: ${(props) => (props.isMobileSize ? '' : '100vh')};
     position: relative;
     overflow: hidden;
-    animation: AnimateBG ${(props) => (props.isMobileSize ? '10s' : '40s')} linear infinite;
-    background-position: 100% -100%;
     .top {
         position: ${(props) => (props.isMobileSize ? 'relative' : 'absolute')};
         top: ${(props) => (props.isMobileSize ? '' : '50%')};
