@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
+import ButtonDirectProductCard from '@components/common/buttons/directProductDetail';
 import { APP_ROUTES } from '@lib/constants/routers';
 import { ICategoryItemProps } from '@lib/domain/category';
 import classNames from 'classnames';
 import Image from 'next/image';
-import Link from 'next/link';
 import { FC } from 'react';
 import styled from 'styled-components';
 const Category: FC<ICategoryItemProps> = ({ item, className, positionItem, linkDetail }) => {
@@ -11,8 +11,12 @@ const Category: FC<ICategoryItemProps> = ({ item, className, positionItem, linkD
         positionItem == 1 ? 'frame-violet-1' : positionItem === 2 || positionItem === 3 ? 'frame-1' : 'frame-black-1';
     const image3 =
         positionItem == 1 ? 'violet' : positionItem === 2 ? 'yellow' : positionItem === 3 ? 'white' : 'black';
+
     return (
-        <Link href={linkDetail || `${APP_ROUTES.works.path}/product-detail`}>
+        <ButtonDirectProductCard
+            positionItem={positionItem}
+            link={linkDetail || `${APP_ROUTES.works.path}/product-detail`}
+        >
             <CateforyItemStyle
                 className={classNames(
                     `category-position-${positionItem} relative w-[26.9rem] h-[37.5rem] clear-both`,
@@ -101,7 +105,7 @@ const Category: FC<ICategoryItemProps> = ({ item, className, positionItem, linkD
                     </p>
                 </div>
             </CateforyItemStyle>
-        </Link>
+        </ButtonDirectProductCard>
     );
 };
 

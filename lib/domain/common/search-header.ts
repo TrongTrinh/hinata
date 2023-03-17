@@ -6,6 +6,7 @@ export interface ISearchFilterItem {
 export interface IRadioFilterProps {
     isActive: boolean;
     className?: string;
+    buttonColor?: string;
     item: ISearchFilterItem;
     handleClick: (item: string) => void;
 }

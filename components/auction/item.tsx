@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import ButtonDirectProductCard from '@components/common/buttons/directProductDetail';
 import { APP_ROUTES } from '@lib/constants/routers';
 import { ICategoryItemProps } from '@lib/domain/category';
 import classNames from 'classnames';
@@ -12,7 +13,10 @@ const Category: FC<ICategoryItemProps> = ({ item, className, positionItem, linkD
     const image3 =
         positionItem == 1 ? 'violet' : positionItem === 2 ? 'yellow' : positionItem === 3 ? 'white' : 'black';
     return (
-        <Link href={linkDetail || `${APP_ROUTES.works.path}/product-detail`}>
+        <ButtonDirectProductCard
+            positionItem={positionItem}
+            link={linkDetail || `${APP_ROUTES.works.path}/product-detail`}
+        >
             <CateforyItemStyle
                 className={classNames(
                     `category-position-${positionItem} relative w-[26.9rem] h-[37.5rem] clear-both`,
@@ -89,7 +93,7 @@ const Category: FC<ICategoryItemProps> = ({ item, className, positionItem, linkD
                     </p>
                 </div>
             </CateforyItemStyle>
-        </Link>
+        </ButtonDirectProductCard>
     );
 };
 

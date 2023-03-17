@@ -10,6 +10,7 @@ import ListWorks from '@components/page/ListWork';
 import TokenHistory from '@components/page/token-history';
 import { ISearchFilterItem } from '@lib/domain/common/search-header';
 import { categories_dummy } from '@lib/utils/dummy/categories';
+import classNames from 'classnames';
 import { isEmpty } from 'lodash';
 import { useCallback, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
@@ -30,31 +31,67 @@ const CategoryDetailPage = () => {
     const onClickFollow = useCallback(() => {
         console.log('push');
     }, []);
+    let positionItem: any = localStorage.getItem('ProductPositionItem');
+    positionItem = positionItem ? parseInt(positionItem) : 4;
     return (
         <div className='container mx-auto'>
-            <div className='clearfix relative pt-[3.046rem] md:pt-[12.8rem] '>
+            <div className='clearfix relative pt-[3.046rem] md:pt-[12.8rem]  overflow-hidden'>
                 {isBigTabletSize && btnBack}
                 <CategoryDetailCard />
                 <CardInfoBlack page={'works'}>
                     <CardInfoBlackUser />
-                    <div className='border-t border-eclipse pt-2.2 max-md:mt-4'>
+                    <div
+                        className={classNames('border-t  pt-2.2 max-md:mt-4', {
+                            'border-eclipse': positionItem !== 1,
+                            'border-white': positionItem === 1,
+                        })}
+                    >
                         <p className='flex items-center mb-0.8'>
-                            <span className='text-1.8 mr-1 text-suva-grey leading-[2.6rem]'>販売価格</span>
-                            <span className='text-2.4 font-bold leading-[3.475rem]'>￥100,000</span>
+                            <span
+                                className={classNames('text-1.8 mr-1 leading-[2.6rem]', {
+                                    'text-suva-grey': positionItem !== 1,
+                                    'text-white': positionItem === 1,
+                                })}
+                            >
+                                販売価格
+                            </span>
+                            <span
+                                className={classNames(`text-2.4 font-bold leading-[3.475rem]`, {
+                                    'text-white': positionItem <= 3,
+                                    'text-black': positionItem > 3,
+                                })}
+                            >
+                                ￥100,000
+                            </span>
                         </p>
                         <p className='flex items-center mb-0.8'>
-                            <span className='text-1.8 mr-1 text-suva-grey leading-[2.6rem]'>販売価格</span>
-                            <span className='text-2.4 font-bold leading-[3.475rem]'>￥100,000</span>
+                            <span
+                                className={classNames('text-1.8 mr-1 leading-[2.6rem]', {
+                                    'text-suva-grey': positionItem !== 1,
+                                    'text-white': positionItem === 1,
+                                })}
+                            >
+                                販売価格
+                            </span>
+                            <span
+                                className={classNames(`text-2.4 font-bold leading-[3.475rem]`, {
+                                    'text-white': positionItem <= 3,
+                                    'text-black': positionItem > 3,
+                                })}
+                            >
+                                ￥100,000
+                            </span>
                         </p>
-                        <div className='flex flex-col gap-3 md:gap-[1.3rem] mt-3 md:my-2 max-md:pb-2 border-b border-eclipse'>
+                        <div className='flex flex-col gap-3 md:gap-[1.3rem] mt-3 md:my-2 max-md:pb-2 '>
                             {!isEmpty(items) &&
                                 items.map((item: ISearchFilterItem, index: React.Key | null | undefined) => (
                                     <RadioFilter
-                                        className='uppercase text-white'
+                                        className={`uppercase ${positionItem > 3 ? 'text-black' : 'text-white'}`}
                                         key={index}
                                         isActive={item.id === itemActive}
                                         item={item}
                                         handleClick={setItemActive}
+                                        buttonColor={`${positionItem > 3 ? 'black' : 'white'}`}
                                     />
                                 ))}
                         </div>
@@ -65,7 +102,12 @@ const CategoryDetailPage = () => {
                             handleClick={onClickFollow}
                             marginT='mt-1'
                         />
-                        <p className='text-1.2 leading-[2rem] md:mt-3 mb-2.4 md:mb-2.8'>
+                        <p
+                            className={classNames(`text-1.2 leading-[2rem] md:mt-3 mb-2.4 md:mb-2.8`, {
+                                'text-white': positionItem <= 3,
+                                'text-black': positionItem > 3,
+                            })}
+                        >
                             ※アクセスが集中する際には、NFTが反映されるまでに時間がかかる場合があります
                         </p>
                     </div>

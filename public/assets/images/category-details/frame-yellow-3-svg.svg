@@ -1,0 +1,31 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 713 710" width="713" height="710">
+	<title>frame-yellow-3-svg</title>
+	<defs>
+		<linearGradient id="g1" x1="39.5" y1="39.7" x2="694.8" y2="695" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#807728"/>
+			<stop offset=".2" stop-color="#d5ce9d"/>
+			<stop offset=".2" stop-color="#d5cb98"/>
+			<stop offset=".3" stop-color="#d3c28a"/>
+			<stop offset=".3" stop-color="#d1b373"/>
+			<stop offset=".4" stop-color="#d0af6c"/>
+			<stop offset=".4" stop-color="#a99351"/>
+			<stop offset=".4" stop-color="#8b7d3c"/>
+			<stop offset=".5" stop-color="#807534"/>
+			<stop offset=".5" stop-color="#806f31"/>
+			<stop offset=".6" stop-color="#805d25"/>
+			<stop offset=".6" stop-color="#815e26"/>
+			<stop offset=".7" stop-color="#a98048"/>
+			<stop offset=".7" stop-color="#6e4c27"/>
+			<stop offset=".8" stop-color="#4d3015"/>
+			<stop offset=".9" stop-color="#6f4e20"/>
+			<stop offset=".9" stop-color="#805d25"/>
+			<stop offset="1" stop-color="#a98048"/>
+		</linearGradient>
+	</defs>
+	<style>
+		.s0 { fill: url(#g1) } 
+	</style>
+	<g id="Layer">
+		<path id="Layer" class="s0" d="m701 570.9v-559.7c0-2.7-1.1-5.2-2.9-7.1-1.9-1.9-4.4-2.9-7.1-2.9h-559.7c-2.6 0-5.2 1-7.1 2.9l-120.3 120.3c-1.8 1.9-2.9 4.4-2.9 7.1v559.7c0 2.6 1.1 5.2 2.9 7.1 1.9 1.8 4.4 2.9 7.1 2.9h559.7c2.6 0 5.2-1.1 7.1-2.9l120.3-120.3c1.8-1.9 2.9-4.5 2.9-7.1z"/>
+	</g>
+</svg>

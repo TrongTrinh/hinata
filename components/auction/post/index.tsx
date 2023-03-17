@@ -22,7 +22,7 @@ const CategoryDetailPage = () => {
     }, []);
     return (
         <div className='container mx-auto'>
-            <div className='clearfix relative pt-[3.046rem] md:pt-[12.8rem] '>
+            <div className='clearfix relative pt-[3.046rem] md:pt-[12.8rem]  overflow-hidden'>
                 {isBigTabletSize && btnBack}
                 <CategoryDetailCard />
                 <CardInfoBlack>

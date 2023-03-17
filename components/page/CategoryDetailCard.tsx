@@ -4,48 +4,85 @@ import classNames from 'classnames';
 import { FC } from 'react';
 import styled from 'styled-components';
 const CategoryDetailCard: FC<ICardDetailCardProps> = ({ className }) => {
+    let positionItem: any = localStorage.getItem('ProductPositionItem');
+    positionItem = positionItem ? parseInt(positionItem) : 4;
+    const image1 =
+        positionItem == 1
+            ? 'frame-violet-1'
+            : positionItem === 2 || positionItem === 3
+            ? 'frame-black-1'
+            : 'frame-white-1';
+    const image3 =
+        positionItem == 1 ? 'violet' : positionItem === 2 ? 'yellow' : positionItem === 3 ? 'white' : 'black';
+    const thumbnail = positionItem > 3 ? 4 : positionItem;
+
+    const lineAnimation = positionItem === 2 ? 'yellow' : 'white';
+    const text = positionItem === 2 ? 'HINATA' : positionItem === 3 ? 'POLYGON' : 'ETHEREUM';
     return (
         <CateforyItemStyle className={classNames(`category-position-4 relative  clear-both`, className)}>
             <img
                 className='absolute w-[39.70%] lg:w-[29.379rem] h-auto lg:h-[19.76rem] left-[48.06%] lg:left-[36.9rem]'
                 alt='category frame 1'
-                src={`/assets/images/category-details/frame1.svg`}
+                src={`/assets/images/category-details/${image1}.svg`}
             />
 
-            <div className='absolute left-[64%] lg:left-[48.9rem] tracking-[0.4rem] max-lg:mt-[3%] lg:top-[2rem] flex items-center'>
-                <span className={`text-white text-[1.5vw] sm:text-1.5   lg:leading-[2.2rem] font-bold`}>ETHEREUM</span>
+            <div className='absolute left-[58%] md:left-[60%] lg:left-[43.9rem] tracking-[0.4rem] max-lg:mt-[2%] lg:top-[2rem] flex items-center'>
+                <img
+                    className='w-[4vw] h-[4vw] sm:w-[2.5rem] sm:h-[2.5rem] mr-0.6'
+                    alt='category frame 1'
+                    src={`/assets/images/category/item-icon-top-${Math.floor(Math.random() + 1.5)}.svg`}
+                />
+                <span
+                    className={`${
+                        positionItem && positionItem > 3 ? 'text-black' : 'text-white'
+                    }  text-[2.2vw] sm:text-1.5   lg:leading-[2.2rem] font-medium font-nato tracking-[4px] md:tracking-[8px]`}
+                >
+                    {text}
+                </span>
             </div>
             <img
                 className='absolute w-[41.233%] lg:w-[30.513rem] h-auto lg:h-[20.524rem] max-lg:mt-[8.7%] lg:top-[6.34rem] left-[0.916%] lg:left-[0.687rem]'
                 alt='category frame 2'
                 src={'/assets/images/category-details/frame2.svg'}
             />
+
             <img
-                className='absolute  w-[100%] lg:w-[74rem] lg:h-[74rem] max-lg:mt-[7.7%] lg:top-[5.72rem]'
+                className='absolute  w-[100%] lg:w-[72rem] lg:h-[72rem] max-lg:mt-[7.7%] lg:top-[5.72rem]'
                 alt='category frame 3'
-                src={`/assets/images/category-details/frame3.svg`}
+                src={`/assets/images/category-details/frame-shadow-3.svg`}
             />
             <img
-                className='absolute  w-[93%]  lg:w-[68.7rem] lg:h-[68.7rem] mt-[8.8%] lg:mt-[6.72rem] left-[1.4%] lg:left-[1%]'
+                className='absolute  w-[100%] lg:w-[71rem] lg:h-[71rem] max-lg:mt-[7.7%] lg:top-[5.72rem]'
                 alt='category frame 3'
-                src={`/assets/images/category-details/frame4.svg`}
+                src={`/assets/images/category-details/frame-${image3}-3.svg`}
             />
+            {positionItem === 2 && (
+                <img
+                    className='absolute  mask  w-[97%]  lg:w-[69rem] lg:h-[69rem] mt-[9.1%] lg:mt-[6.72rem] left-[1.5%] lg:left-[1%]'
+                    alt='category frame 3'
+                    src={`/assets/images/category-details/frame4.svg`}
+                />
+            )}
             <div className='overflow-hidden  absolute  w-[93%] max-md:h-[14vw] h-[9.4rem]  lg:w-[68.7rem] lg:h-[9.4rem] md:mt-[2.2%] lg:mt-[1.2rem]  lg:left-[1.2%]'>
                 <img
                     className='move-line-card-left-to-right absolute  w-[93%]  lg:w-[59.7rem]  max-md:h-[14vw] h-[9.4rem]'
                     alt='category frame 3'
-                    src={`/assets/images/category-details/frame6.png`}
+                    src={`/assets/images/category-details/line-${lineAnimation}-animation.png`}
                 />
             </div>
             <div className='overflow-hidden  absolute  w-[93%] max-md:h-[14vw] h-[9.4rem]  lg:w-[68.7rem] lg:h-[9.4rem] mt-[94.8%] md:mt-[96.2%] lg:mt-[70.7rem]  lg:left-[1.2%]'>
                 <img
                     className='move-line-card-right-to-left absolute  w-[93%]  lg:w-[59.7rem]  max-md:h-[14vw] h-[9.4rem]'
                     alt='category frame 3'
-                    src={`/assets/images/category-details/frame6.png`}
+                    src={`/assets/images/category-details/line-${lineAnimation}-animation.png`}
                 />
             </div>
-            <div className='absolute mask w-[91.89%] lg:w-[68rem] h-auto lg:h-[68rem]  max-lg:mt-[9.4%] lg:top-[7rem] left-[2.02%] lg:left-[1.5rem]'>
-                <img alt='category frame 3' src={'/assets/images/category-details/thumbnail.svg'} />
+            <div className='absolute mask  w-[97%]  lg:w-[68.7rem] lg:h-[68.7rem] mt-[9.1%] lg:mt-[6.72rem] left-[1.5%] lg:left-[1%]'>
+                <img
+                    className={classNames({ 'img-2': positionItem === 2 })}
+                    alt='category frame 3'
+                    src={`/assets/images/category-details/thumbnail-${thumbnail}.svg`}
+                />
             </div>
 
             <div className={'list-stars max-lg:relative max-lg:w-[155%] max-sm:w-[150%]'}>
@@ -273,17 +310,20 @@ const CateforyItemStyle = styled.div`
         mask-image: url('/assets/images/category-details/frame_mask.svg');
         mask-size: 100%;
         img {
-            width: 332px;
-            height: 500px;
-
+            width: 100%;
+            height: 100%;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             object-fit: cover;
             @media (max-width: 768px) {
-                width: 41.6vw;
-                height: 62.667vw;
+                width: 100%;
+                height: 100%;
+            }
+            &.img-2 {
+                width: 332px;
+                height: 500px;
             }
         }
     }

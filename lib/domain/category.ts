@@ -7,7 +7,7 @@ export interface ICategoryItemProps {
     classImg?: string;
     size?: string;
     linkDetail?: string;
-    positionItem?: number;
+    positionItem?: number | string;
 }
 
 export interface ICardDetailCardProps {
