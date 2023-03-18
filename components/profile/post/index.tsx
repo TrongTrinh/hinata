@@ -25,6 +25,8 @@ const CategoryDetailPage = () => {
     const onClickShowMore = useCallback(() => {
         console.log('🚀 ~ file: index.tsx ~ line 29 ~ onClickShowMore ~ onClickShowMore', onClickShowMore);
     }, []);
+    let positionItem: any = localStorage.getItem('ProductPositionItem');
+    positionItem = positionItem ? parseInt(positionItem) : 4;
     return (
         <div>
             <div className='container mx-auto'>
@@ -33,13 +35,24 @@ const CategoryDetailPage = () => {
                     <CategoryDetailCard />
                     <CardInfoBlack page='my_collection' classBtnBack='text-white' classWrapInfo='card-info-profile'>
                         <CardInfoBlackUser />
-                        <div className='border-t border-eclipse pt-2 md:pt-2.6 max-md:mt-4'>
-                            <h2 className='text-1.5 md:text-1.8 md:leading-[2.606rem]'>アイテム詳細</h2>
+                        <div
+                            className={classNames('border-t border-eclipse pt-2 md:pt-2.6 max-md:mt-4', {
+                                'text-black': positionItem > 3,
+                            })}
+                        >
+                            <h2
+                                className={classNames('text-1.5 md:text-1.8 md:leading-[2.606rem]', {
+                                    'text-black': positionItem > 3,
+                                })}
+                            >
+                                アイテム詳細
+                            </h2>
                             <p
                                 className={classNames(
                                     'text-1.2 leading-[2rem] md:text-1.5 md:leading-[3rem] mt-0.6 md:mt-1',
                                     {
                                         'max-h-4 md:max-h-[6rem] overflow-hidden': !isMoreRead,
+                                        'text-black': positionItem > 3,
                                     },
                                 )}
                             >
@@ -63,7 +76,12 @@ const CategoryDetailPage = () => {
                                         MORE READ
                                     </span>
                                     <div>
-                                        <img src='/assets/images/common/dropdown-white.svg' alt='more read' />
+                                        <img
+                                            src={`/assets/images/common/dropdown-${
+                                                positionItem > 3 ? 'black' : 'white'
+                                            }.svg`}
+                                            alt='more read'
+                                        />
                                     </div>
                                 </button>
                             </div>

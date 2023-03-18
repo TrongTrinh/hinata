@@ -56,6 +56,29 @@ const CategoryDetailCard: FC<ICardDetailCardProps> = ({ className }) => {
                 alt='category frame 3'
                 src={`/assets/images/category-details/frame-${image3}-3.svg`}
             />
+
+            {positionItem && positionItem < 4 && (
+                <>
+                    <div className='absolute w-[7rem]  h-[30vw] sm:h-[30rem] overflow-hidden  max-sm:mt-[68vw] sm:top-[35.6rem]   md:top-[58.6rem]  lg:top-[46.7rem] left-[-2.8rem]'>
+                        <img
+                            className='w-[7rem] h-[45vw] sm:h-[50rem] left-[0.6rem]'
+                            alt='category frame 3'
+                            src={`/assets/images/category-details/light-${
+                                positionItem && positionItem === 2 ? 'yellow' : 'white'
+                            }-vertical.png`}
+                        />
+                    </div>
+                    <div className='absolute w-[7rem] xl:left-[67rem] xl:top-[-5rem] lg:left-[66.9rem] lg:top-[-5rem] md:left-[78rem]  sm:h-[50rem] h-[30rem] overflow-hidden    right-[-3rem] '>
+                        <img
+                            className='w-[7rem] sm:h-[50rem] h-[30rem] left-[0.6rem]'
+                            alt='category frame 3'
+                            src={`/assets/images/category-details/light-${
+                                positionItem && positionItem === 2 ? 'yellow' : 'white'
+                            }-vertical.png`}
+                        />
+                    </div>
+                </>
+            )}
             {positionItem === 2 && (
                 <img
                     className='absolute  mask  w-[97%]  lg:w-[69rem] lg:h-[69rem] mt-[9.1%] lg:mt-[6.72rem] left-[1.5%] lg:left-[1%]'
@@ -70,7 +93,7 @@ const CategoryDetailCard: FC<ICardDetailCardProps> = ({ className }) => {
                     src={`/assets/images/category-details/line-${lineAnimation}-animation.png`}
                 />
             </div>
-            <div className='overflow-hidden  absolute  w-[93%] max-md:h-[14vw] h-[9.4rem]  lg:w-[68.7rem] lg:h-[9.4rem] mt-[94.8%] md:mt-[96.2%] lg:mt-[70.7rem]  lg:left-[1.2%]'>
+            <div className='overflow-hidden  absolute  w-[93%] max-md:h-[14vw] h-[9.4rem]  lg:w-[68.7rem] lg:h-[9.4rem] mt-[98.8%] md:mt-[100.8%] lg:mt-[71.3rem]  lg:left-[1.2%]'>
                 <img
                     className='move-line-card-right-to-left absolute  w-[93%]  lg:w-[59.7rem]  max-md:h-[14vw] h-[9.4rem]'
                     alt='category frame 3'
@@ -84,7 +107,6 @@ const CategoryDetailCard: FC<ICardDetailCardProps> = ({ className }) => {
                     src={`/assets/images/category-details/thumbnail-${thumbnail}.svg`}
                 />
             </div>
-
             <div className={'list-stars max-lg:relative max-lg:w-[155%] max-sm:w-[150%]'}>
                 <img
                     className={`star1 w-[13px] absolute mt-[50%] left-[10%]`}

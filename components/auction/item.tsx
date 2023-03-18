@@ -58,6 +58,28 @@ const Category: FC<ICategoryItemProps> = ({ item, className, positionItem, linkD
                     alt='category frame 3'
                     src={`/assets/images/category/frame-${image3}-3.svg`}
                 />
+                {positionItem && positionItem < 4 && (
+                    <>
+                        <div className='absolute w-[2.2rem] h-[24rem] overflow-hidden  top-[16rem] left-[0.5rem]'>
+                            <img
+                                className='w-[3rem] h-[20rem] left-[0.6rem]'
+                                alt='category frame 3'
+                                src={`/assets/images/category-details/light-${
+                                    positionItem && positionItem === 2 ? 'yellow' : 'white'
+                                }-vertical.png`}
+                            />
+                        </div>
+                        <div className='absolute w-[3rem] h-[17rem] overflow-hidden  top-[0rem] left-[251px]'>
+                            <img
+                                className='w-[50rem] h-[20rem] left-[0.6rem]'
+                                alt='category frame 3'
+                                src={`/assets/images/category-details/light-${
+                                    positionItem && positionItem === 2 ? 'yellow' : 'white'
+                                }-vertical.png`}
+                            />
+                        </div>
+                    </>
+                )}
                 <div className='mask w-[25.7rem] absolute top-[2.7rem] left-[1.3rem]'>
                     <img
                         alt='category frame 3'
