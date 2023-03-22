@@ -6,7 +6,7 @@ import Link from 'next/link';
 import React, { FC, useCallback } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
-const CardInfoBlackUser: FC<ICardInfoBlackUserProps> = ({ isShowHeartNumber }) => {
+const CardInfoBlackUser: FC<ICardInfoBlackUserProps> = () => {
     const isMobileSize = useMediaQuery({ query: '(max-width: 768px)' });
     let positionItem: any = localStorage.getItem('ProductPositionItem');
     positionItem = positionItem ? parseInt(positionItem) : 4;

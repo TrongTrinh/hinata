@@ -4,7 +4,6 @@ import { APP_ROUTES } from '@lib/constants/routers';
 import { ICategoryItemProps } from '@lib/domain/category';
 import classNames from 'classnames';
 import Image from 'next/image';
-import Link from 'next/link';
 import { FC } from 'react';
 import styled from 'styled-components';
 const Category: FC<ICategoryItemProps> = ({ item, className, positionItem, linkDetail }) => {
