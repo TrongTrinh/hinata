@@ -6,21 +6,62 @@ import styled from 'styled-components';
 const CategoryDetailCard: FC<ICardDetailCardProps> = ({ className }) => {
     let positionItem: any = localStorage.getItem('ProductPositionItem');
     positionItem = positionItem ? parseInt(positionItem) : 4;
-    const image1 =
-        positionItem == 1
-            ? 'frame-violet-1'
-            : positionItem === 2 || positionItem === 3
-            ? 'frame-black-1'
-            : 'frame-white-1';
+    // const image1 =
+    //     positionItem == 1
+    //         ? 'frame-violet-1'
+    //         : positionItem === 2 || positionItem === 3
+    //         ? 'frame-black-1'
+    //         : 'frame-white-1';
     const image3 =
         positionItem == 1 ? 'violet' : positionItem === 2 ? 'yellow' : positionItem === 3 ? 'white' : 'black';
     const thumbnail = positionItem > 3 ? 4 : positionItem;
 
-    const lineAnimation = positionItem === 2 ? 'yellow' : 'white';
+    // const lineAnimation = positionItem === 2 ? 'yellow' : 'white';
     const text = positionItem === 2 ? 'HINATA' : positionItem === 3 ? 'POLYGON' : 'ETHEREUM';
     return (
         <CateforyItemStyle className={classNames(`category-position-4 relative  clear-both`, className)}>
             <img
+                className='w-[790px] absolute'
+                alt='category frame 1'
+                src={`/assets/images/category-details/frame_${image3}.png`}
+            />
+            <div className='absolute max-[768px]:mt-[3%] left-[46%] md:left-[350px] tracking-[0.4rem] md:top-[25px] flex items-center'>
+                <img
+                    className='w-[4vw] h-[4vw] sm:w-[2.5rem] sm:h-[2.5rem] mr-0.8'
+                    alt='category frame 1'
+                    src={`/assets/images/category/item-icon-top-${Math.floor(Math.random() + 1.5)}.svg`}
+                />
+                <span
+                    className={`${
+                        positionItem && positionItem > 3 ? 'text-black' : 'text-white'
+                    }  text-[2.2vw] sm:text-1.5   lg:leading-[2.2rem] font-semibold font-nato tracking-[4px] md:tracking-[8px]`}
+                >
+                    {text}
+                </span>
+            </div>
+            {/* <div className='absolute mask  w-[97%]  lg:w-[68.7rem] lg:h-[68.7rem] mt-[9.1%] lg:mt-[6.72rem] left-[1.5%] lg:left-[1%]'> */}
+            <div className='absolute mask w-[82.1%] md:w-[610px] max-[768px]:mt-[11.5%] max-[768px]:ml-[4.1%] lg:w-[649px] md:h-[608px] lg:h-[648px]  lg:top-[89px] lg:left-[32px] md:top-[84px] md:left-[30px] '>
+                {positionItem === 2 && (
+                    <img
+                        className='absolute  w-[100%]'
+                        alt='category frame 3'
+                        src={`/assets/images/category-details/frame4.svg`}
+                    />
+                )}
+                <img
+                    className={classNames({ 'img-2': positionItem === 2 })}
+                    alt='category frame 3'
+                    src={`/assets/images/category-details/thumbnail-${thumbnail}.svg`}
+                />
+            </div>
+            {/* <div className='absolute mask  w-[97%]  lg:w-[68.7rem] lg:h-[68.7rem] mt-[9.1%] lg:mt-[6.72rem] left-[1.5%] lg:left-[1%]'>
+                <img
+                    className={classNames({ 'img-2': positionItem === 2 })}
+                    alt='category frame 3'
+                    src={`/assets/images/category-details/thumbnail-${thumbnail}.svg`}
+                />
+            </div> */}
+            {/* <img
                 className='absolute w-[39.70%] lg:w-[29.379rem] h-auto lg:h-[19.76rem] left-[48.06%] lg:left-[36.9rem]'
                 alt='category frame 1'
                 src={`/assets/images/category-details/${image1}.svg`}
@@ -106,8 +147,8 @@ const CategoryDetailCard: FC<ICardDetailCardProps> = ({ className }) => {
                     alt='category frame 3'
                     src={`/assets/images/category-details/thumbnail-${thumbnail}.svg`}
                 />
-            </div>
-            <div className={'list-stars max-lg:relative max-lg:w-[155%] max-sm:w-[150%]'}>
+            </div> */}
+            <div className={'list-stars max-lg:relative max-lg:w-[155%] max-sm:w-[140%]'}>
                 <img
                     className={`star1 w-[13px] absolute mt-[50%] left-[10%]`}
                     alt='category star'
@@ -329,7 +370,7 @@ const CateforyItemStyle = styled.div`
 
     .mask {
         position: relative;
-        mask-image: url('/assets/images/category-details/frame_mask.svg');
+        mask-image: url('/assets/images/category/frame_mask.png');
         mask-size: 100%;
         img {
             width: 100%;
