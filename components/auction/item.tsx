@@ -7,10 +7,11 @@ import Image from 'next/image';
 import { FC } from 'react';
 import styled from 'styled-components';
 const Category: FC<ICategoryItemProps> = ({ item, className, positionItem, linkDetail }) => {
-    const image1 =
-        positionItem == 1 ? 'frame-violet-1' : positionItem === 2 || positionItem === 3 ? 'frame-1' : 'frame-black-1';
+    // const image1 =
+    //     positionItem == 1 ? 'frame-violet-1' : positionItem === 2 || positionItem === 3 ? 'frame-1' : 'frame-black-1';
     const image3 =
         positionItem == 1 ? 'violet' : positionItem === 2 ? 'yellow' : positionItem === 3 ? 'white' : 'black';
+
     return (
         <ButtonDirectProductCard
             positionItem={positionItem}
@@ -23,12 +24,40 @@ const Category: FC<ICategoryItemProps> = ({ item, className, positionItem, linkD
                 )}
             >
                 <img
+                    className='w-[25.9rem] h-[28.2rem] absolute left-[1.5rem]'
+                    alt='category frame 1'
+                    src={`/assets/images/category/frame_${image3}.png`}
+                />
+                <div className='absolute left-[14rem] tracking-[0.4rem] top-0.8 flex items-center'>
+                    <img
+                        className='w-[1rem] h-[1rem]'
+                        alt='category frame 1'
+                        src={`/assets/images/category/item-icon-top-${Math.floor(Math.random() + 1.5)}.svg`}
+                    />
+                    <span
+                        className={`${
+                            positionItem && positionItem > 3 ? 'text-black' : 'text-white'
+                        } text-[0.8rem] leading-[1.158rem] ml-0.6 font-bold`}
+                    >
+                        ETHEREUM
+                    </span>
+                </div>
+                <div className='mask w-[23.3rem] absolute top-[3.28rem] left-[2.345rem]'>
+                    <img
+                        alt='category frame 3'
+                        src={
+                            // @ts-ignore
+                            item.products[Math.floor(Math.random() * item.products.length)].Product.minimizedImage || ''
+                        }
+                    />
+                </div>
+                {/* <img
                     className='w-[14.5rem] h-[9.8rem] absolute left-[10.644rem]'
                     alt='category frame 1'
                     src={`/assets/images/category/${image1}.svg`}
                 />
 
-                <div className='absolute left-[15rem] tracking-[0.4rem] top-0.8 flex items-center'>
+                <div className='absolute left-[14rem] tracking-[0.4rem] top-0.8 flex items-center'>
                     <img
                         className='w-[1rem] h-[1rem]'
                         alt='category frame 1'
@@ -68,7 +97,7 @@ const Category: FC<ICategoryItemProps> = ({ item, className, positionItem, linkD
                                 }-vertical.png`}
                             />
                         </div>
-                        <div className='absolute w-[3rem] h-[17rem] overflow-hidden  top-[0rem] left-[251px]'>
+                        <div className='absolute w-[3rem] h-[17rem] overflow-hidden  top-[0rem] max-[768px]:left-[251px] max-[1170px]:left-[225px] max-[1280px]:left-[239px] left-[251px]'>
                             <img
                                 className='w-[50rem] h-[20rem] left-[0.6rem]'
                                 alt='category frame 3'
@@ -88,8 +117,35 @@ const Category: FC<ICategoryItemProps> = ({ item, className, positionItem, linkD
                         }
                     />
                 </div>
+                {positionItem && positionItem === 2 ? (
+                    <img
+                        className='move-card-product-left-to-right absolute  top-[1.2rem] w-[12rem] h-[4rem]'
+                        alt='category frame 3'
+                        src={`/assets/images/category/line-horizontal-yellow.png`}
+                    />
+                ) : (
+                    <img
+                        className='move-card-product-left-to-right absolute  top-[1.2rem] w-[12rem] h-[4rem]'
+                        alt='category frame 3'
+                        src={`/assets/images/category/light.png`}
+                    />
+                )}
+                {positionItem && positionItem === 2 ? (
+                    <img
+                        className=' z-[999] move-card-product-right-to-left absolute  top-[24.5rem] w-[12rem] h-[4rem]'
+                        alt='category frame 3'
+                        src={`/assets/images/category/line-horizontal-yellow.png`}
+                    />
+                ) : (
+                    <img
+                        className=' z-[999] move-card-product-right-to-left absolute  top-[24.5rem] w-[12rem] h-[4rem]'
+                        alt='category frame 3'
+                        src={`/assets/images/category/light.png`}
+                    />
+                )} */}
+
                 <div className='content w-[24.2rem] h-[11.2rem] absolute bottom-0 rounded-lg opacity-[0.9]'></div>
-                <div className='content w-[24.2rem] h-[11.2rem] absolute bottom-0 rounded-lg px-0.9 pt-0.8 pb-0.8 font-nato'>
+                <div className='content w-[24.2rem] h-[11.2rem] absolute bottom-0 rounded-lg px-0.9 pt-0.8 pb-0.8 font-nato text-left'>
                     <h2 className='title font-medium text-1.3 leading-[1.882rem] mb-0.1 uppercase flex items-center justify-between'>
                         <span>SEKIYA-SENSHOKU </span>
                         <div className='flex items-center'>
@@ -218,12 +274,15 @@ const CateforyItemStyle = styled.div`
 
     .mask {
         position: relative;
-        mask-image: url('/assets/images/index/frame_mask.png');
+        // mask-image: url('/assets/images/index/frame_mask.png');
+        mask-image: url('/assets/images/category/frame_mask.png');
         mask-size: 100%;
         img {
             width: 100%;
             height: 100%;
             position: absolute;
+            top: 0;
+            left: 0;
             top: 0;
             left: 0;
             object-fit: cover;

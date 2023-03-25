@@ -14,13 +14,39 @@ const CategoryDetailCard: FC<ICardDetailCardProps> = ({ className }) => {
             : 'frame-white-1';
     const image3 =
         positionItem == 1 ? 'violet' : positionItem === 2 ? 'yellow' : positionItem === 3 ? 'white' : 'black';
-    const thumbnail = positionItem > 3 ? 4 : positionItem;
+    // const thumbnail = positionItem > 3 ? 4 : positionItem;
 
-    const lineAnimation = positionItem === 2 ? 'yellow' : 'white';
-    const text = positionItem === 2 ? 'HINATA' : positionItem === 3 ? 'POLYGON' : 'ETHEREUM';
+    // const lineAnimation = positionItem === 2 ? 'yellow' : 'white';
+    // const text = positionItem === 2 ? 'HINATA' : positionItem === 3 ? 'POLYGON' : 'ETHEREUM';
     return (
         <CateforyItemStyle className={classNames(`category-position-4 relative  clear-both`, className)}>
             <img
+                className='w-[25.9rem] h-[28.2rem] absolute left-[1.5rem]'
+                alt='category frame 1'
+                src={`/assets/images/category/frame_${image3}.png`}
+            />
+            <div className='absolute left-[14rem] tracking-[0.4rem] top-0.8 flex items-center'>
+                <img
+                    className='w-[1rem] h-[1rem]'
+                    alt='category frame 1'
+                    src={`/assets/images/category/item-icon-top-${Math.floor(Math.random() + 1.5)}.svg`}
+                />
+                <span
+                    className={`${
+                        positionItem && positionItem > 3 ? 'text-black' : 'text-white'
+                    } text-[0.8rem] leading-[1.158rem] ml-0.6 font-bold`}
+                >
+                    ETHEREUM
+                </span>
+            </div>
+            <div className='mask w-[23.3rem] absolute top-[3.28rem] left-[2.345rem]'>
+                <img
+                    className='absolute w-[39.70%] lg:w-[29.379rem] h-auto lg:h-[19.76rem] left-[48.06%] lg:left-[36.9rem]'
+                    alt='category frame 1'
+                    src={`/assets/images/category-details/${image1}.svg`}
+                />
+            </div>
+            {/* <img
                 className='absolute w-[39.70%] lg:w-[29.379rem] h-auto lg:h-[19.76rem] left-[48.06%] lg:left-[36.9rem]'
                 alt='category frame 1'
                 src={`/assets/images/category-details/${image1}.svg`}
@@ -106,7 +132,7 @@ const CategoryDetailCard: FC<ICardDetailCardProps> = ({ className }) => {
                     alt='category frame 3'
                     src={`/assets/images/category-details/thumbnail-${thumbnail}.svg`}
                 />
-            </div>
+            </div> */}
             <div className={'list-stars max-lg:relative max-lg:w-[155%] max-sm:w-[150%]'}>
                 <img
                     className={`star1 w-[13px] absolute mt-[50%] left-[10%]`}
