@@ -370,7 +370,7 @@ const CateforyItemStyle = styled.div`
 
     .mask {
         position: relative;
-        mask-image: url('/assets/images/category/frame_mask.png');
+        mask-image: url('/assets/images/category-details/mask.png');
         mask-size: 100%;
         img {
             width: 100%;
