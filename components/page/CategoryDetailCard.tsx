@@ -25,7 +25,7 @@ const CategoryDetailCard: FC<ICardDetailCardProps> = ({ className }) => {
                 alt='category frame 1'
                 src={`/assets/images/category-details/frame_${image3}.png`}
             />
-            <div className='absolute max-[768px]:mt-[3%] left-[46%] md:left-[350px] tracking-[0.4rem] md:top-[25px] flex items-center'>
+            <div className='absolute max-[768px]:mt-[4%] left-[59%] md:left-[462px] tracking-[0.4rem] md:top-[33px] flex items-center'>
                 <img
                     className='w-[4vw] h-[4vw] sm:w-[2.5rem] sm:h-[2.5rem] mr-0.8'
                     alt='category frame 1'
@@ -40,7 +40,7 @@ const CategoryDetailCard: FC<ICardDetailCardProps> = ({ className }) => {
                 </span>
             </div>
             {/* <div className='absolute mask  w-[97%]  lg:w-[68.7rem] lg:h-[68.7rem] mt-[9.1%] lg:mt-[6.72rem] left-[1.5%] lg:left-[1%]'> */}
-            <div className='absolute mask w-[82.1%] md:w-[610px] max-[768px]:mt-[11.5%] max-[768px]:ml-[4.1%] lg:w-[649px] md:h-[608px] lg:h-[648px]  lg:top-[89px] lg:left-[32px] md:top-[84px] md:left-[30px] '>
+            <div className='absolute mask w-[85.2%] md:w-[632px] max-[768px]:mt-[10.9%] max-[768px]:ml-[6.2%] lg:w-[672px] md:h-[632px] lg:h-[672px]  lg:top-[86px] lg:left-[48px] md:top-[80px] md:left-[45px] '>
                 {positionItem === 2 && (
                     <img
                         className='absolute  w-[100%]'
