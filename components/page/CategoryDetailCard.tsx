@@ -41,18 +41,19 @@ const CategoryDetailCard: FC<ICardDetailCardProps> = ({ className }) => {
             </div>
             {/* <div className='absolute mask  w-[97%]  lg:w-[68.7rem] lg:h-[68.7rem] mt-[9.1%] lg:mt-[6.72rem] left-[1.5%] lg:left-[1%]'> */}
             <div className='absolute mask w-[85.2%] md:w-[632px] max-[768px]:mt-[10.9%] max-[768px]:ml-[6.2%] lg:w-[672px] md:h-[632px] lg:h-[672px]  lg:top-[86px] lg:left-[48px] md:top-[80px] md:left-[45px] '>
-                {positionItem === 2 && (
+                {positionItem === 3 ? (
                     <img
-                        className='absolute  w-[100%]'
+                        className={classNames({ 'img-2': positionItem === 2 })}
                         alt='category frame 3'
-                        src={`/assets/images/category-details/frame4.svg`}
+                        src={`/assets/images/category-details/thumbnail-3.png`}
+                    />
+                ) : (
+                    <img
+                        className={classNames({ 'img-2': positionItem === 2 })}
+                        alt='category frame 3'
+                        src={`/assets/images/category-details/thumbnail-${thumbnail}.svg`}
                     />
                 )}
-                <img
-                    className={classNames({ 'img-2': positionItem === 2 })}
-                    alt='category frame 3'
-                    src={`/assets/images/category-details/thumbnail-${thumbnail}.svg`}
-                />
             </div>
             {/* <div className='absolute mask  w-[97%]  lg:w-[68.7rem] lg:h-[68.7rem] mt-[9.1%] lg:mt-[6.72rem] left-[1.5%] lg:left-[1%]'>
                 <img
@@ -372,9 +373,12 @@ const CateforyItemStyle = styled.div`
         position: relative;
         mask-image: url('/assets/images/category-details/mask.png');
         mask-size: 100%;
+        background: black;
         img {
-            width: 100%;
-            height: 100%;
+            max-width: 65%;
+            max-height: 65%;
+            width: auto;
+            height: auto;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -384,10 +388,10 @@ const CateforyItemStyle = styled.div`
                 width: 100%;
                 height: 100%;
             }
-            &.img-2 {
-                width: 332px;
-                height: 500px;
-            }
+            // &.img-2 {
+            //     width: 332px;
+            //     height: 500px;
+            // }
         }
     }
     .mask::before {
