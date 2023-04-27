@@ -52,7 +52,7 @@ const Categories: FC<ICategoriesProps> = ({
                 </h2>
             )}
 
-            <div className='flex flex-col justify-center items-center sm:grid   grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-[4rem] md:gap-y-[7rem] mt-5 md:mt-[8.6rem]'>
+            <div className='flex flex-col justify-center items-center sm:grid   grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-[4rem] md:gap-y-[rem] mt-5 md:mt-[8.6rem]'>
                 {data &&
                     data.map((item, index) => (
                         <CategoryItem

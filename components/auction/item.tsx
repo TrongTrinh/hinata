@@ -19,16 +19,16 @@ const Category: FC<ICategoryItemProps> = ({ item, className, positionItem, linkD
         >
             <CateforyItemStyle
                 className={classNames(
-                    `category-position-${positionItem} relative w-[26.9rem] h-[37.5rem] clear-both`,
+                    `category-position-${positionItem} relative w-[26.9rem] h-[35.5rem] clear-both`,
                     className,
                 )}
             >
                 <img
-                    className='w-[25.9rem] h-[28.2rem] absolute left-[1.5rem]'
+                    className='h-[26.9rem] absolute left-[1.5rem]'
                     alt='category frame 1'
-                    src={`/assets/images/category/frame_${image3}.png`}
+                    src={`/assets/images/category-details/frame_${image3}.png`}
                 />
-                <div className='absolute left-[14rem] tracking-[0.4rem] top-0.8 flex items-center'>
+                <div className='absolute left-[17.2rem] tracking-[0.4rem] top-1 flex items-center'>
                     <img
                         className='w-[1rem] h-[1rem]'
                         alt='category frame 1'
@@ -36,13 +36,13 @@ const Category: FC<ICategoryItemProps> = ({ item, className, positionItem, linkD
                     />
                     <span
                         className={`${
-                            positionItem && positionItem > 3 ? 'text-black' : 'text-white'
-                        } text-[0.8rem] leading-[1.158rem] ml-0.6 font-bold`}
+                            positionItem && Number(positionItem) > 3 ? 'text-black' : 'text-white'
+                        } text-[0.8rem] leading-[1.158rem] ml-0.6 font-bold tracking-[2px]`}
                     >
                         ETHEREUM
                     </span>
                 </div>
-                <div className='mask w-[23.3rem] absolute top-[3.28rem] left-[2.345rem]'>
+                <div className='mask w-[22.9rem] absolute top-[2.94rem] left-[3.2rem]'>
                     <img
                         alt='category frame 3'
                         src={
@@ -275,7 +275,7 @@ const CateforyItemStyle = styled.div`
     .mask {
         position: relative;
         // mask-image: url('/assets/images/index/frame_mask.png');
-        mask-image: url('/assets/images/category/frame_mask.png');
+        mask-image: url('/assets/images/category-details/mask.png');
         mask-size: 100%;
         img {
             width: 100%;
