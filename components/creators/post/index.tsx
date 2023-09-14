@@ -120,7 +120,7 @@ const CreatorItem: FC<ICreatorPageProps> = () => {
                     <div>
                         <img
                             src='/assets/images/creators/profile.png'
-                            className='w-[42.8rem] h-[29rem] object-cover'
+                            className='w-full h-auto md:w-[42.8rem] md:h-[29rem] object-cover'
                             alt='banner create details'
                         />
                     </div>
