@@ -29,7 +29,12 @@ const CategoryPage = () => {
     return (
         <div>
             <PageBanner title={'Magazine'} />
-            <FilterSection items={items} itemActive={itemActive} handleClick={setItemActive} />
+            <FilterSection
+                items={items}
+                itemActive={itemActive}
+                handleClick={setItemActive}
+                isShowDropdownRight={false}
+            />
 
             <div>
                 <div className='grid   grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-3 gap-y-[4rem]  md:gap-y-[7rem] mt-5 md:mt-[7rem]'>

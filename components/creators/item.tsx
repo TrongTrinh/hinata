@@ -16,7 +16,7 @@ const CreatorItem: FC<ICreatorItemProps> = ({
     return (
         <figure className={classNames('border-b', className)}>
             <Link href={`${APP_ROUTES.creators.path}/${item.slug || item.id}`} className='flex items-center'>
-                <div>
+                <div className='max-md:ml-2'>
                     <img
                         className={classNames('object-cover mr-2 rounded-full mb-1.6', size, classImg)}
                         src={item.avatar || '/assets/images/common/icn-notlogin.jpg'}

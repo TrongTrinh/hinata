@@ -723,7 +723,7 @@ const SectionStyle = styled.div<{ isMobileSize: boolean; visualNo: number }>`
         position: absolute;
         top: ${(props) => (props.isMobileSize ? '35%' : '50%')};
         right: ${(props) => (props.isMobileSize ? '' : '0')};
-        left: ${(props) => (props.isMobileSize ? '0' : '')};
+        left: ${(props) => (props.isMobileSize ? '-5px' : '')};
         user-select: none;
         z-index: 10;
         .label {
@@ -731,6 +731,9 @@ const SectionStyle = styled.div<{ isMobileSize: boolean; visualNo: number }>`
             font-family: 'Jost';
             font-size: 1.4rem;
             letter-spacing: 0.3em;
+            @media (max-width: 768px) {
+                font-size: 1.2rem;
+            }
         }
         .c-scrolldown {
             width: 1px;

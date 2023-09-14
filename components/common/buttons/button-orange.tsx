@@ -42,7 +42,7 @@ const ButtonOrange: FC<IButtonOrangeProps> = ({
                         <span className={classnames('relative', classTitle)}>{title}</span>
                         {imgSrc && (
                             <div className={classnames('absolute right-1.4', imgClass)}>
-                                <img src={imgSrc} alt='btn image' />
+                                <img className='w-1.4 mt-[2px]' src={imgSrc} alt='btn image' />
                             </div>
                         )}
                     </>

@@ -9,8 +9,10 @@ const ButtonBackOverview: FC<IButtonBackPageProps> = ({
     page,
     size = 'w-2 md:w-2.8 h-2 md:h-2.8',
     className,
+    classText,
     ...props
 }) => {
+    console.log('🚀 ~ file: back-to-overview.tsx:15 ~ classText:', classText);
     const name = (page && APP_ROUTES[page].name) || props.name || 'back';
     const href = (page && APP_ROUTES[page].path) || props.href || '/';
     return (
@@ -27,7 +29,13 @@ const ButtonBackOverview: FC<IButtonBackPageProps> = ({
                     src={'/assets/images/common/arrow-left.svg'}
                 />
             </div>
-            <span className='ml-1 md:ml-1.2 uppercase leading:[2.168rem] md:leading-[2.89rem] text-1.5 md:text-2 font-semibold'>
+            <span
+                className={classnames(
+                    `ml-1 md:ml-1.2 uppercase leading:[2.168rem] md:leading-[2.89rem] text-1.5 md:text-2 ${
+                        classText ? classText : 'font-semibold'
+                    }`,
+                )}
+            >
                 {name}
             </span>
         </Link>

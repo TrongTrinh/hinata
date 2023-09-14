@@ -13,6 +13,7 @@ const ItemEdit: FC<IItemEditProps> = ({
     handleClick,
     classNameTitle,
     classInput,
+    isTitle,
 }) => {
     const [value, setValue] = useState<string>(defaultValue);
     const ref = useRef<HTMLInputElement | null>(null);
@@ -26,7 +27,13 @@ const ItemEdit: FC<IItemEditProps> = ({
     }, []);
 
     return (
-        <div className={classNames('text-1.5 py-1.4 md:py-2.6 flex max-sm:flex-col relative', className)}>
+        <div
+            className={classNames(
+                'text-1.5 md:py-2.6 flex max-sm:flex-col relative',
+                { 'py-1.4': !isTitle },
+                className,
+            )}
+        >
             {title && <span className={classNames('text-suva-grey min-w-[14.4rem]', classNameTitle)}>{title}</span>}
             <div className='w-full relative mr-2'>
                 <input
@@ -40,7 +47,7 @@ const ItemEdit: FC<IItemEditProps> = ({
             </div>
             <button
                 onClick={onClickEdit}
-                className='max-sm:absolute max-sm:right-0 max-sm:w-auto max-sm:top-1.8 flex items-center w-[6.2rem]'
+                className='max-sm:absolute max-sm:right-0 max-sm:w-auto top-[40%] flex items-center w-[6.2rem]'
             >
                 <span className='w-1.2 md:w-1.6'>
                     {disabled ? (

@@ -36,8 +36,10 @@ const CategoryDetailPage = () => {
                     <CardInfoBlack page='my_collection' classBtnBack='text-white' classWrapInfo='card-info-profile'>
                         <CardInfoBlackUser />
                         <div
-                            className={classNames('border-t border-eclipse pt-2 md:pt-2.6 max-md:mt-4', {
+                            className={classNames('border-t  pt-2 md:pt-2.6 max-md:mt-4', {
                                 'text-black': positionItem > 3,
+                                'border-eclipse': positionItem !== 1,
+                                'border-white': positionItem === 1,
                             })}
                         >
                             <h2
@@ -102,7 +104,7 @@ const CategoryDetailPage = () => {
                 <TokenHistory
                     className='history-table-black md:mt-2'
                     classWrappBtn='pt-[3rem] pb-[1rem] md:pt-[7rem] md:pb-[2rem]'
-                    classTitle='text-white font-semibold'
+                    classTitle='text-white'
                     title='Token History'
                 />
                 {isMobileSize && <hr className='border-ghost mt-4 pb-0.8' />}
@@ -110,10 +112,11 @@ const CategoryDetailPage = () => {
                     items={data}
                     title='More works'
                     className='md:pb-[1.2rem] max-md:mb-1.8'
-                    classTitle='pb-3 text-white font-semibold'
+                    classTitle='pb-3 text-white'
                     classWrapBtn='pt-3 md:pt-[5.7rem]'
                     classBtnBack='max-md:mt-[2.8rem] text-white'
                     pageTitle={'my_collection'}
+                    classTextBtnBack='font-normal'
                 />
             </div>
         </div>

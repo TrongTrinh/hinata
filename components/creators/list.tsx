@@ -16,9 +16,10 @@ const CreatorList: FC<ICreatorsListProps> = ({
     classWrappBtn,
     classCreatorItem,
 }) => {
+    const [dummy_users_state, setDataState] = useState<IUser[]>(dummy_users);
     const onClickShowMore = useCallback(() => {
-        console.log('🚀 ~ file: index.tsx ~ line 12 ~ onClickShowMore ~ onClickShowMore', onClickShowMore);
-    }, []);
+        setDataState((prev: IUser[]) => [...prev, ...dummy_users]);
+    }, [setDataState]);
     const [itemActive, setItemActive] = useState('12');
 
     const items = [
@@ -30,7 +31,6 @@ const CreatorList: FC<ICreatorsListProps> = ({
         { name: 'Game', id: '1623' },
         { name: 'Membership', id: '14323' },
     ];
-    const creators: IUser[] = dummy_users;
     // const { data: creators, error: creatorsError } = useSWR<IUser[]>(`/api/users/creators?take=9`, fetcher);
     // console.log('🚀 ~ file: index.tsx:29 ~ CreatorList ~ creatorsError', creatorsError);
     return (
@@ -53,8 +53,8 @@ const CreatorList: FC<ICreatorsListProps> = ({
             )}
             <div>
                 <div className='grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-[1rem] md:gap-y-[2.6rem] mt-2.6 md:mt-[8.6rem]'>
-                    {creators &&
-                        creators.map((item, index) => (
+                    {dummy_users_state &&
+                        dummy_users_state.map((item, index) => (
                             <CreatorItem
                                 item={item}
                                 key={index}

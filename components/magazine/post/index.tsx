@@ -6,17 +6,19 @@ import { createGlobalStyle } from 'styled-components';
 
 const CategoryPage = () => {
     const listOwner = [
-        '/assets/images/common/twitter-active.svg',
-        '/assets/images/common/facebook-active.svg',
-        '/assets/images/common/line-active.svg',
-        '/assets/images/common/share-black.svg',
+        { url: 'https://twitter.com/?lang=en', icon: '/assets/images/common/twitter-active.svg' },
+        { url: 'https://www.facebook.com/', icon: '/assets/images/common/facebook-active.svg' },
+        { url: 'https://line.me/en/', icon: '/assets/images/common/line-active.svg' },
+        { url: 'https://hinata-vn.com/', icon: '/assets/images/common/share-black.svg' },
     ];
     const listSocials = (
         <ul className='flex gap-[1.16rem] md:gap-[1.954rem]'>
             {!isEmpty(listOwner) &&
                 listOwner.map((item: any, index: React.Key | null | undefined) => (
                     <li key={index}>
-                        <img className='w-[3rem] h-[3rem]' alt='category frame 1' src={item} />
+                        <a href={item.url}>
+                            <img className='w-[3rem] h-[3rem]' alt='category frame 1' src={item.icon} />
+                        </a>
                     </li>
                 ))}
         </ul>
@@ -25,12 +27,12 @@ const CategoryPage = () => {
         console.log('🚀 ~ file: index.tsx ~ line 12 ~ onClickShowMore ~ onClickShowMore', onClickShowMore);
     }, []);
     return (
-        <div className='mt-[9rem] md:mt-[18rem] max-w-[100rem] px-1.5 mx-auto mb-[12rem]'>
+        <div className='mt-[5rem] md:mt-[10rem] max-w-[100rem] px-1.5 mx-auto mb-[12rem]'>
             <GlobalStyle />
             <h1 className='text-2.4 leading-[4rem] md:text-3.4 md:leading-[4.6rem] font-bold'>
                 【SDGs×NFT】HINATAではNFTを活用したSDGsの活動を応援しています！
             </h1>
-            <div className='flex-col md:flex justify-between items-center  mt-1.4 md:mt-2.6 mb-3 md:mb-3.8'>
+            <div className='max-md:flex-col md:flex justify-between items-center  mt-1.4 md:mt-2.6 mb-3 md:mb-3.8'>
                 <div className='flex items-center max-md:mb-3'>
                     <div className='w-[8rem] h-[6rem] md:w-[11rem] md:h-[6rem]'>
                         <img
@@ -123,8 +125,8 @@ const CategoryPage = () => {
                 </p>
             </div>
             {listSocials}
-            <div className='hinata-official flex items-center mt-3 max-md:px-2 max-md:py-2.4 px-3.5 pt-3.8 py-4 text-white'>
-                <div className='w-[11rem]'>
+            <div className='hinata-official flex mt-3 max-md:px-2 max-md:py-2.4 px-3.5 pt-3.8 py-4 text-white'>
+                <div className='w-[11rem] mt-1'>
                     <img className='w-[6rem] h-[6rem]' alt='category frame 1' src={`/assets/images/common/logo.png`} />
                 </div>
                 <div className='w-full'>

@@ -9,4 +9,5 @@ export interface IItemEditProps {
     defaultValue?: string;
     classInput?: string;
     handleClick: (name: string, value: string, disabled: boolean) => void;
+    isTitle?: boolean;
 }

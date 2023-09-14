@@ -36,6 +36,7 @@ export interface IListWorkProps {
     classWrapBtn?: string;
     classBtnBack?: string;
     isShowBtnBack?: boolean;
+    classTextBtnBack?: string;
 }
 
 export interface ICardInfoBlackUserProps {

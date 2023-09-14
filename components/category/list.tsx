@@ -16,9 +16,10 @@ const Categories: FC<ICategoriesProps> = ({
     classWrappBtn,
     linkDetail,
 }) => {
+    const [categories_dummy_state, setDataState] = useState([...categories_dummy, ...categories_dummy]);
     const onClickShowMore = useCallback(() => {
-        console.log('🚀 ~ file: index.tsx ~ line 12 ~ onClickShowMore ~ onClickShowMore', onClickShowMore);
-    }, []);
+        setDataState((prev: any) => [...prev, ...categories_dummy]);
+    }, [setDataState]);
     const items = useMemo(
         () => [
             { name: 'ALL', id: '23432' },
@@ -29,7 +30,6 @@ const Categories: FC<ICategoriesProps> = ({
         ],
         [],
     );
-    const data = [...categories_dummy, ...categories_dummy];
     const [itemActive, setItemActive] = useState<string>('23432');
     const titleBtnMobile = useMemo(() => {
         return find(items, (item) => item.id === itemActive)?.name;
@@ -53,8 +53,8 @@ const Categories: FC<ICategoriesProps> = ({
             )}
 
             <div className='flex flex-col justify-center items-center sm:grid   grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-[4rem] md:gap-y-[rem] mt-5 md:mt-[8.6rem]'>
-                {data &&
-                    data.map((item, index) => (
+                {categories_dummy_state &&
+                    categories_dummy_state.map((item, index) => (
                         <CategoryItem
                             positionItem={index + 1}
                             item={item}

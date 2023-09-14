@@ -27,11 +27,11 @@ const MagazineItem: FC<IMagazineItemProps> = ({ item, className, marginB = '' })
                         alt={item.media.alt_text}
                     />
                 </div>
-                <figcaption className='font-bold font-nato text-1.8 md:text-1.5 leading-[2.6rem] md:leading-2 my-1 md:mt-0.6 md:mb-1 px-[1.672rem] md:px-0.6  max-h-[5.2rem] md:max-h-[5.2rem] overflow-hidden '>
+                <figcaption className='font-bold font-nato text-1.8 md:text-1.5 leading-[2.6rem] md:leading-2 my-1 md:mt-0.6 md:mb-1 px-[1rem] md:px-0.6  max-h-[5.2rem] md:max-h-[5.2rem] overflow-hidden '>
                     {item.title.rendered}
                 </figcaption>
                 <hr className='my-8 h-px border-[#CECECF] border-1.6' />
-                <div className='text-1.5 md:text-1.3 uppercase leading-[2.2rem] md:leading-[1.88rem] flex items-center text-suva-grey mt-1 mb-[0.7rem] md:mt-[0.76rem] md:mb-[0.5rem] px-[1.672rem] md:px-0.6'>
+                <div className='text-1.5 md:text-1.3 uppercase leading-[2.2rem] md:leading-[1.88rem] flex items-center text-suva-grey mt-1 mb-[0.7rem] md:mt-[0.76rem] md:mb-[0.5rem] px-[1rem] md:px-0.6'>
                     <div className='category'>{item.category.name}</div>
                     <div className='mx-0.4'>|</div>
                     <div className='date'>{dayjs(item.date).format('YYYY.MM.DD')}</div>

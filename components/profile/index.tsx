@@ -6,6 +6,7 @@ import FilterSection from '@components/page/FilterSection';
 import TokenHistory from '@components/page/token-history';
 import { APP_ROUTES } from '@lib/constants/routers';
 import { ICreatorPageProps } from '@lib/domain/creator';
+import classNames from 'classnames';
 import { find } from 'lodash';
 import { FC, useCallback, useMemo, useState } from 'react';
 import styled from 'styled-components';
@@ -65,6 +66,7 @@ const CreatorItem: FC<ICreatorPageProps> = () => {
                                 name='name'
                                 defaultValue='JAPAN'
                                 classInput='text-1.5 leading-2.172 md:text-2 md:leading-2.896 font-semibold  text-suva-grey'
+                                isTitle={true}
                             />
                             <h2 className='max-md:mt-0.6 text-2.2 leading-[3.186rem] md:text-3.6 md:leading-[5.213rem] font-semibold mb-2.8 md:mb-[2.26rem]'>
                                 Ellis Thomas Burleigh
@@ -88,15 +90,10 @@ const CreatorItem: FC<ICreatorPageProps> = () => {
                                 </p>
                             </div>
                             <hr className='border border-eclipse' />
-                            <ItemEdit
-                                title='ウォレットアドレス: '
-                                placeholder='ウォレットアドレス'
-                                handleClick={onClickItemEdit}
-                                disabled={itemEditActive !== 'ウォレットアドレス'}
-                                autoFocus={itemEditActive === 'ウォレットアドレス'}
-                                name='ウォレットアドレス'
-                                defaultValue='hGfVLrHFxecC3E2FPuTM6d1SdVB975LGnMA'
-                            />
+                            <div className={classNames('text-1.5 md:py-2.6 flex max-sm:flex-col relative py-1.4')}>
+                                <p className={classNames('text-suva-grey min-w-[14.4rem]')}>ウォレットアドレス:</p>
+                                <p className='w-full relative mr-2'>hGfVLrHFxecC3E2FPuTM6d1SdVB975LGnMA</p>
+                            </div>
                             <hr className='border border-eclipse' />
                             <ItemEdit
                                 title='Email:'
@@ -122,7 +119,7 @@ const CreatorItem: FC<ICreatorPageProps> = () => {
                             <hr className='border border-eclipse md:hidden' />
                         </div>
                     </div>
-                    <div className='mt-3.4 md:mt-[11rem] mb-0.9'>
+                    <div className='mt-3.4 md:mt-[11rem] md:mb-0.9 mb-1.4'>
                         <FilterSection
                             className='bg-gradient-orange-red md:px-3.6 md:py-[2rem]'
                             items={accountOptions}

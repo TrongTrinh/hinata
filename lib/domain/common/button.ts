@@ -21,4 +21,5 @@ export interface IButtonBackPageProps {
     name?: string;
     page?: string;
     size?: string;
+    classText?: string;
 }

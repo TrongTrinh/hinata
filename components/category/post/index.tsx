@@ -95,13 +95,20 @@ const CategoryDetailPage = () => {
                                     />
                                 ))}
                         </div>
-                        <ButtonOrange
-                            className='max-md:mt-4 max-md:mb-4'
-                            title={'購入する'}
-                            size='w-[22rem] md:w-[20rem] h-3.2'
-                            handleClick={onClickFollow}
-                            marginT='mt-1'
-                        />
+                        <div
+                            className={classNames('flex max-md:justify-center border-t', {
+                                'border-eclipse': positionItem !== 1,
+                                'border-white': positionItem === 1,
+                            })}
+                        >
+                            <ButtonOrange
+                                className='max-md:mt-4 max-md:mb-4'
+                                title={'購入する'}
+                                size='w-[22rem] md:w-[20rem] h-3.2'
+                                handleClick={onClickFollow}
+                                marginT='mt-1'
+                            />
+                        </div>
                         <p
                             className={classNames(`text-1.2 leading-[2rem] md:mt-3 mb-2.4 md:mb-2.8`, {
                                 'text-white': positionItem <= 3,

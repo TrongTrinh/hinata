@@ -27,7 +27,7 @@ const CreatorItem: FC<ICreatorPageProps> = () => {
         />
     );
     return (
-        <div className='mt-[8rem]'>
+        <div>
             <div>
                 <img src='/assets/images/creators/banner.svg' className='w-full' alt='banner create details' />
             </div>
@@ -106,7 +106,7 @@ const CreatorItem: FC<ICreatorPageProps> = () => {
                     </div>
                 </div>
                 <div className='pt-3 md:pt-5 pb-3 md:pb-4 flex max-md:flex-col justify-between border-b border-ghost'>
-                    <div className='mr-3'>
+                    <div className='md:mr-3'>
                         <h2 className=' text-3  leading-[4.343rem] mb-2 md:mb-1.5 uppercase'>Profile</h2>
                         <p className='max-w-[48.2rem] text-1.5 leading-[3rem] max-md:mb-2'>
                             クマとホラーとカワイイを愛するデザイナー <br></br>
