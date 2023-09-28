@@ -28,16 +28,16 @@ const Category: FC<ICategoryItemProps> = ({ item, className, positionItem, linkD
                     alt='category frame 1'
                     src={`/assets/images/category-details/frame_${image3}.png`}
                 />
-                <div className='absolute left-[17.2rem] tracking-[0.4rem] top-1 flex items-center'>
+                <div className='absolute left-[17.6rem] tracking-[0.4rem] top-[1.1rem] flex items-center'>
                     <img
-                        className='w-[1rem] h-[1rem]'
+                        className='w-[0.9rem] h-[0.9rem]'
                         alt='category frame 1'
                         src={`/assets/images/category/item-icon-top-${Math.floor(Math.random() + 1.5)}.svg`}
                     />
                     <span
                         className={`${
                             positionItem && Number(positionItem) > 3 ? 'text-black' : 'text-white'
-                        } text-[0.8rem] leading-[1.158rem] ml-0.6 font-bold tracking-[2px]`}
+                        } text-[0.7rem] leading-[1.1rem] ml-[0.3rem] font-bold tracking-[2px]`}
                     >
                         ETHEREUM
                     </span>

@@ -107,7 +107,7 @@ const CreatorItem: FC<ICreatorPageProps> = () => {
                 </div>
                 <div className='pt-3 md:pt-5 pb-3 md:pb-4 flex max-md:flex-col justify-between border-b border-ghost'>
                     <div className='md:mr-3'>
-                        <h2 className=' text-3  leading-[4.343rem] mb-2 md:mb-1.5 uppercase'>Profile</h2>
+                        <h2 className=' text-3  leading-[4.343rem] mb-2 md:mb-1.5 uppercase font-jost'>Profile</h2>
                         <p className='max-w-[48.2rem] text-1.5 leading-[3rem] max-md:mb-2'>
                             クマとホラーとカワイイを愛するデザイナー <br></br>
                             デザイナー講師、主にグラフィック・キャラクターデザインがメイン。 『ジャパンクリエイターズ

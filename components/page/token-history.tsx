@@ -21,7 +21,7 @@ const TokenHistory: FC<ITokenHistoryProps> = ({ title = 'TOKEN HISTORY', classNa
 
     return (
         <TokenHistoryStyled className={classnames('mt-3 md:mt-5', className)}>
-            <h2 className={classnames('text-3 leading-4.335 mb-2 uppercase', classTitle)}>{title} </h2>
+            <h2 className={classnames('text-3 leading-4.335 mb-2 uppercase font-jost', classTitle)}>{title} </h2>
             <div className='wrap-content border border-ghost p-1.6 md:py-3 md:px-2 rounded-lg'>
                 <DropdownDefault
                     overlay={

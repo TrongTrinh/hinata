@@ -68,7 +68,7 @@ const FilterSection: FC<IPageFilterProps> = ({
                                 className,
                             )}
                         >
-                            <div className='flex flex-col gap-[2.2rem] mb-2.8'>
+                            <div className='flex flex-col gap-[2.2rem]'>
                                 {!isEmpty(items) &&
                                     items.map((item: ISearchFilterItem, index: React.Key | null | undefined) => (
                                         <RadioFilter
@@ -104,7 +104,7 @@ const FilterSection: FC<IPageFilterProps> = ({
                         className='uppercase  bg-transparent border border-white'
                         marginT='mt-0'
                         size='w-[11rem] md:w-[22rem] h-3.2'
-                        classTitle='mr-1.6 ml-2 font-nato'
+                        classTitle='mr-1.6 sm:ml-2 font-nato'
                         imgSrc={'/assets/images/common/dropdown-white.svg'}
                         title='新着順'
                     />

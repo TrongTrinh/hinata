@@ -7,7 +7,7 @@ const PageBanner: FC<IPageBannerProps> = ({ classNameTitle, title, className }) 
         <div className={className}>
             <h1
                 className={classNames(
-                    'uppercase leading-[6.5rem] md:leading-[13.5rem] text-[4.5rem] md:text-[9.4rem] mb-2',
+                    'uppercase leading-[6.5rem] md:leading-[13.5rem] text-[4.5rem] md:text-[9.4rem] mb-2 font-jost',
                     classNameTitle,
                 )}
             >

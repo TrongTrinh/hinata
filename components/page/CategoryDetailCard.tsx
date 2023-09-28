@@ -25,9 +25,9 @@ const CategoryDetailCard: FC<ICardDetailCardProps> = ({ className }) => {
                 alt='category frame 1'
                 src={`/assets/images/category-details/frame_${image3}.png`}
             />
-            <div className='absolute max-[768px]:mt-[4%] left-[59%] md:left-[462px] tracking-[0.4rem] md:top-[33px] flex items-center'>
+            <div className='absolute max-[768px]:mt-[4.5%] left-[62%] md:left-[462px] tracking-[0.4rem] md:top-[33px] flex items-center'>
                 <img
-                    className='w-[4vw] h-[4vw] sm:w-[2.5rem] sm:h-[2.5rem] mr-0.8'
+                    className='w-[4vw] h-[4vw] sm:w-[2.5rem] sm:h-[2.5rem] mr-0.8 max-sm:hidden'
                     alt='category frame 1'
                     src={`/assets/images/category/item-icon-top-${Math.floor(Math.random() + 1.5)}.svg`}
                 />

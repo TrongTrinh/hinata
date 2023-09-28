@@ -49,7 +49,7 @@ const SearchFilterBox: FC<ISearchFilterSectionProps> = ({ className }) => {
     return (
         <div
             className={classnames(
-                'mt-2 shadow-[4px 6px 7px 0px #00000033] w-auto h-auto mx-1.5  md:w-[66.2rem] md:h-[29.2rem] shadow-search-box bg-gradient-search-box text-white rounded-xl px-3 pt-2.4 pb-2.8',
+                'mt-2 md:w-[66.2rem] md:h-[29.2rem] shadow-search-box bg-gradient-search-box text-white rounded-xl px-3 pt-2.4 pb-2.8',
                 className,
             )}
         >
